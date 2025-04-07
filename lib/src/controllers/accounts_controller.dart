@@ -88,7 +88,6 @@ class AccountsController extends GetxController{
   Future<bool> compareVersionApp({String? version}) async {
     if(kDebugMode) print("Fungsi compareversion dijalankan");
     try {
-      print("Masuk ke sini");
       isLoading(true);
       http.Response response = await http.post(
         Uri.tryParse("https://api.dbsolution.app/utils/check-version")!,

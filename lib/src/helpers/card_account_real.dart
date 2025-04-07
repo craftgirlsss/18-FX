@@ -5,7 +5,6 @@ import 'package:delapanbelasfx/src/views/dashboard/accounts/deposit_account.dart
 import 'package:delapanbelasfx/src/views/dashboard/accounts/detail_account_page.dart';
 import 'package:delapanbelasfx/src/views/dashboard/accounts/documents_account.dart';
 import 'package:delapanbelasfx/src/views/dashboard/accounts/internal_transfer.dart';
-import 'package:delapanbelasfx/src/views/dashboard/accounts/mutasi_akun.dart';
 import 'package:delapanbelasfx/src/views/dashboard/accounts/withdrawal_account.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,9 +45,9 @@ class _CardAccountRealState extends State<CardAccountReal> {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white38),
+            border: Border.all(color: Colors.white24),
             color: GlobalVariablesType.backgroundColor,
-            boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
+            // boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
           ),
           child: Column(
             children: [
@@ -98,24 +97,11 @@ class _CardAccountRealState extends State<CardAccountReal> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Free Margin", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white70)),
-                      const Text("79% Equity", style: TextStyle(color: Colors.white38, fontSize: 12)),
-                      CupertinoButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: (){
-                          Get.to(() => const MutasiAkun());
-                        },
-                        child: const Row(
-                          children: [
-                            Text("Lihat Mutasi Akun", style: TextStyle(color: Colors.white60, fontSize: 14, fontWeight: FontWeight.bold)),
-                            SizedBox(width: 4),
-                            Icon(Iconsax.arrow_right_1_outline, size: 18, color: Colors.white60)
-                          ],
-                        ),
-                      ),
+                      Text("Free Margin", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white70)),
+                      Text("79% Equity", style: TextStyle(color: Colors.white38, fontSize: 12)),
                     ],
                   ),
                   SizedBox(

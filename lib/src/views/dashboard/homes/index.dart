@@ -6,6 +6,7 @@ import 'package:delapanbelasfx/src/components/pie_chart.dart';
 import 'package:delapanbelasfx/src/controllers/utils_controller.dart';
 import 'package:delapanbelasfx/src/helpers/annotated_region.dart';
 import 'package:delapanbelasfx/src/helpers/url_launchers.dart';
+import 'package:delapanbelasfx/src/views/dashboard/homes/detail_news.dart';
 import 'package:delapanbelasfx/src/views/dashboard/setting/detail_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -143,8 +144,9 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                   margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                   padding: const EdgeInsets.only(right: 15, top: 15, bottom: 15),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(20),
                     color: Colors.white30,
+                    border: Border.all(color: Colors.white12),
                     boxShadow: const [
                       BoxShadow(color: Colors.black12, blurRadius: 20),
                     ]
@@ -166,20 +168,23 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Info dan Promo", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
-                            CupertinoButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: (){},
-                              child: const Text("Lihat Semua", style: TextStyle(fontSize: 14, color: Colors.white60),)),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text("Info dan Promo", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                              CupertinoButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: (){},
+                                child: const Text("Lihat Semua", style: TextStyle(fontSize: 14, color: Colors.white60),)),
+                            ],
+                          ),
                         ),
                   
                         SizedBox(
                         width: size.width,
-                        height: size.width / 1.9,
+                        height: size.width / 2.1,
                         child: Obx(
                           () => PageView.builder(
                             controller: pageControllerPromo,
@@ -192,13 +197,15 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                             },
                             itemBuilder: (context, index) {
                               return CupertinoButton(
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
                                 onPressed: (){
                                   launchUrls(utilsController.responseImageSlider.value!.response[index].link!);
                                 },
                                 child: Container(
                                   margin: const EdgeInsets.symmetric(horizontal: 5),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
+                                    border: Border.all(color: Colors.white12),
+                                    borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(image: NetworkImage(utilsController.responseImageSlider.value!.response[index].picture!),
                                     fit: BoxFit.cover
                                     ),
@@ -254,6 +261,15 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                               author: utilsController.newsModels.value?.response[index].author,
                               title: utilsController.newsModels.value?.response[index].title,
                               urlImage: utilsController.newsModels.value?.response[index].picture,
+                              onPressed: (){
+                                Get.to(() => DetailNews(
+                                  viewer: '12',
+                                  date: DateFormat('MMMM, dd yyyy').format(utilsController.newsModels.value?.response[index].tanggal != null ? DateTime.parse(utilsController.newsModels.value!.response[index].tanggal!) : DateTime.now()),
+                                  content: utilsController.newsModels.value?.response[index].message,
+                                  title: utilsController.newsModels.value?.response[index].title,
+                                  newsImage: utilsController.newsModels.value?.response[index].picture,
+                                ));
+                              }
                             )
                           ),
                         ),

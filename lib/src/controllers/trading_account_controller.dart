@@ -24,6 +24,37 @@ class TradingAccountController extends GetxController{
     getListAccountTrading();
   }
 
+  // CREATE DEMO AKUN TRADING API
+  Future<bool> createDemo() async {
+    try {
+      isLoading(true);
+      http.Response response = await http.post(
+        Uri.tryParse("https://api.dbsolution.app/account/create-demo")!, 
+        headers: {
+          'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: {
+          'user_token': accountsController.userToken.value
+        },
+      );
+      var result = jsonDecode(response.body);
+      if(kDebugMode) print(result);
+      isLoading(false);
+      if (response.statusCode == 200) {
+        responseMessage(result['message']);
+        return true;
+      } else {
+        responseMessage(result['message']);
+        return false;
+      }
+    } catch (e) {
+      isLoading(false);
+      responseMessage(e.toString());
+      return false;
+    }
+  }
+
   // POST LIST TRADING AKUN API
   Future<bool> getListAccountTrading() async {
     try {

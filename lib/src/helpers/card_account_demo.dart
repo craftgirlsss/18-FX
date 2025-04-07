@@ -20,9 +20,9 @@ class _CardAccountDemoState extends State<CardAccountDemo> {
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white38),
+        border: Border.all(color: Colors.white24),
         color: GlobalVariablesType.backgroundColor,
-        boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
+        // boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
       ),
       child: Column(
         children: [

@@ -1,3 +1,5 @@
+import 'package:delapanbelasfx/src/components/alerts.dart';
+import 'package:delapanbelasfx/src/controllers/accounts_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:delapanbelasfx/src/helpers/api.dart';
 import 'package:delapanbelasfx/src/helpers/permission_handler.dart';
@@ -7,6 +9,7 @@ import 'package:delapanbelasfx/src/components/textstyle.dart';
 import 'package:delapanbelasfx/src/helpers/focus_manager.dart';
 import 'package:delapanbelasfx/src/helpers/url_launchers.dart';
 import 'package:delapanbelasfx/src/views/login/login.dart';
+import 'package:get/get.dart';
 
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({super.key});
@@ -16,6 +19,7 @@ class IntroductionScreen extends StatefulWidget {
 }
 
 class _IntroductionScreenState extends State<IntroductionScreen> {
+  AccountsController accountsController = Get.find();
   Future permissionFirebase(context)async{
     await FirebaseApi().initNotifications();
     permissionServiceCall(context);
@@ -25,6 +29,12 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   void initState() {
     super.initState();
     permissionFirebase(context);
+    accountsController.checkMyVersionApp().then((version) async {
+      whatsNew(
+        time: DateTime(2025, DateTime.april, 7),
+        versionApp: version
+      );
+    });
   }
   
   @override
@@ -70,7 +80,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                             })),
                         TextButton(
                           onPressed: () => launchUrls(GlobalVariablesType.termsAndConditions),
-                          child: Text(GlobalVariablesType.termsAndConditionsText, style: kDefaultTextStyleButtonText(color: Colors.white)) )
+                          child: Text(GlobalVariablesType.termsAndConditionsText, style: const TextStyle(color: Colors.white, fontSize: 13)) )
                       ],
                     ),
                   )

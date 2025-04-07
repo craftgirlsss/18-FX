@@ -24,6 +24,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   AccountsController accountsController = Get.find();
   String? appID;
+  RxString appVersion = ''.obs;
   Future<String> getIDFirebase() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('player_id') ?? 'App ID Null';
@@ -175,21 +176,17 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 const SizedBox(height: 10),
                 Center(
-                  child: Column(
-                    children: [
-                      Text("App Version 1.0.0+1", style: kDefaultTextStyleCustom(color: Colors.white38, fontSize: 15)),
-                      // GestureDetector(
-                      //   onLongPress: ()async{
-                      //     await Clipboard.setData(
-                      //       ClipboardData(text: appID!)
-                      //     );
-                      //   },
-                      //   child: Tooltip(
-                      //     triggerMode: TooltipTriggerMode.longPress,
-                      //     message: "ID App Copied",
-                      //     showDuration: const Duration(seconds: 2),
-                      //     child: Text("App ID $appID", style: kDefaultTextStyleCustom(color: Colors.white38, fontSize: 12)))),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: GestureDetector(
+                      onTap: (){
+                        whatsNew(
+                          time: DateTime(2025, DateTime.april, 7),
+                          versionApp: appVersion.value
+                        );
+                      },
+                      child: Text("Lihat Apa yang baru di Versi Aplikasi $appVersion", style: kDefaultTextStyleCustom(color: Colors.white38, fontSize: 12))
+                    ),
                   ),
                 ),
               ],

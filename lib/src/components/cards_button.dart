@@ -1,4 +1,3 @@
-import 'package:delapanbelasfx/main.dart';
 import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/helpers/date_formatted.dart';
 import 'package:flutter/cupertino.dart';
@@ -167,7 +166,7 @@ class CardsButton {
   }){
     return CupertinoButton(
       onPressed: onPressed,
-      padding: EdgeInsets.zero,
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

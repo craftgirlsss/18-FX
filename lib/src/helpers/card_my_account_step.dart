@@ -1,5 +1,8 @@
+import 'package:delapanbelasfx/src/components/alerts.dart';
 import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/controllers/accounts_controller.dart';
+import 'package:delapanbelasfx/src/controllers/trading_account_controller.dart';
+import 'package:delapanbelasfx/src/views/dashboard/accounts/create_real_account.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,6 +16,7 @@ class CardMenuAccount extends StatefulWidget {
 
 class _CardMenuAccountState extends State<CardMenuAccount> {
   AccountsController accountsController = Get.find();
+  TradingAccountController tradingAccountController = Get.find();
   RxString steps = "0".obs;
     
   @override
@@ -22,9 +26,9 @@ class _CardMenuAccountState extends State<CardMenuAccount> {
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white38),
+        border: Border.all(color: Colors.white24),
         color: GlobalVariablesType.backgroundColor,
-        boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
+        // boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,9 +97,72 @@ class _CardMenuAccountState extends State<CardMenuAccount> {
                       )
                     ),
                     onPressed: () {
-                      
+                      tradingAccountController.getListAccountTrading().then((results) {
+                        if(!results){
+                          alertError(
+                            message: tradingAccountController.responseMessage.value,
+                            onTap: (){Navigator.pop(context);},
+                            title: "Gagal"
+                          );
+                        }else{
+                          // ignore: prefer_is_empty
+                          if(tradingAccountController.listTradingAccount.value!.response.isEmpty){
+                            tradingAccountController.createDemo().then((result){
+                              if(result){
+                                alertDialogCustomSuccess(
+                                  onTap: (){
+                                    tradingAccountController.getListAccountTrading();
+                                    Navigator.pop(context);
+                                  },
+                                  message: tradingAccountController.responseMessage.value,
+                                  textButton: "Kembali",
+                                  title: "Berhasil"
+                                );
+                              }else{
+                                alertError(
+                                  message: tradingAccountController.responseMessage.value,
+                                  onTap: (){Navigator.pop(context);},
+                                  title: "Gagal"
+                                );
+                              }
+                            });
+                          }else{
+                            if(tradingAccountController.listTradingAccount.value?.response.length != 0 || tradingAccountController.listTradingAccount.value?.response.length != null){
+                              if(tradingAccountController.listTradingAccount.value!.response[0].type == "real" || tradingAccountController.listTradingAccount.value!.response[0].type == "demo"){
+                                Get.to(() => const CreateRealAccount());
+                              }else{
+                                alertError(
+                                  message: "Tidak ada akun real ataupun demo",
+                                  onTap: (){Navigator.pop(context);},
+                                  title: "Gagal"
+                                );
+                              }
+                            }else{
+                              tradingAccountController.createDemo().then((result){
+                                if(result){
+                                  alertDialogCustomSuccess(
+                                    onTap: (){
+                                      tradingAccountController.getListAccountTrading();
+                                      Navigator.pop(context);
+                                    },
+                                    message: tradingAccountController.responseMessage.value,
+                                    textButton: "Kembali",
+                                    title: "Berhasil"
+                                  );
+                                }else{
+                                  alertError(
+                                    message: tradingAccountController.responseMessage.value,
+                                    onTap: (){Navigator.pop(context);},
+                                    title: "Gagal"
+                                  );
+                                }
+                              });
+                            }
+                          }
+                        }
+                      });
                     },
-                  child: const Text("Buat Akun Baru", style: TextStyle(color: Colors.black54, fontSize: 12), textAlign: TextAlign.center)
+                  child: Obx(() => tradingAccountController.isLoading.value ? const CupertinoActivityIndicator(color: Colors.black54) : const Text("Buat Akun Baru", style: TextStyle(color: Colors.black54, fontSize: 12), textAlign: TextAlign.center))
                   ),
                 ),
               ],

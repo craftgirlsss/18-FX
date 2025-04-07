@@ -77,18 +77,18 @@ class _MainPageState extends State<MainPage>  with AutomaticKeepAliveClientMixin
             child: BottomNavigationBar(
               items:  <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                  activeIcon: Icon(TeenyIcons.home, color: GlobalVariablesType.mainColor, size: 20),
-                  icon: const Icon(OctIcons.home, color: Color.fromARGB(255, 93, 93, 91)),
-                  label: 'Home',
+                  activeIcon: Icon(Icons.newspaper_outlined, color: GlobalVariablesType.mainColor),
+                  icon: const Icon(Icons.newspaper_outlined, color: Color.fromARGB(255, 93, 93, 91)),
+                  label: 'Beranda',
                 ),
                 BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.candlestick_chart, color: GlobalVariablesType.mainColor),
-                  icon: const Icon(Icons.candlestick_chart_outlined, color: Color.fromARGB(255, 93, 93, 91)),
+                  activeIcon: Icon(Iconsax.card_outline, color: GlobalVariablesType.mainColor),
+                  icon: const Icon(Iconsax.card_outline, color: Color.fromARGB(255, 93, 93, 91)),
                   label: 'Accounts',
                 ),
                 BottomNavigationBarItem(
-                  activeIcon: Icon(CupertinoIcons.arrow_up_arrow_down, color: GlobalVariablesType.mainColor),
-                  icon: const Icon(CupertinoIcons.arrow_up_arrow_down, color:Color.fromARGB(255, 93, 93, 91)),
+                  activeIcon: Icon(HeroIcons.arrows_up_down, color: GlobalVariablesType.mainColor),
+                  icon: const Icon(HeroIcons.arrows_up_down, color:Color.fromARGB(255, 93, 93, 91)),
                   label: 'Quotes',
                 ),
                 BottomNavigationBarItem(
