@@ -20,9 +20,9 @@ class _CardAccountDemoState extends State<CardAccountDemo> {
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white24),
+        border: Border.all(color: Colors.black12),
         color: GlobalVariablesType.backgroundColor,
-        // boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 10)]
       ),
       child: Column(
         children: [
@@ -32,11 +32,11 @@ class _CardAccountDemoState extends State<CardAccountDemo> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white54),
+                  border: Border.all(color: Colors.black45),
                   color: Colors.white24,
                   borderRadius: BorderRadius.circular(7)
                 ),
-                child: Center(child: Text("DEMO - ${widget.tradingID ?? '0'}", style: const TextStyle(color: Colors.white54, fontWeight: FontWeight.bold))),
+                child: Center(child: Text("DEMO - ${widget.tradingID ?? '0'}", style: const TextStyle(color: Colors.black45, fontWeight: FontWeight.bold))),
               ),
             ],
           ),
@@ -45,12 +45,12 @@ class _CardAccountDemoState extends State<CardAccountDemo> {
             children: [
               const Expanded(child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5),
-                child: Divider(color: Colors.white54),
+                child: Divider(color: Colors.black45),
               )),
-              Text("Margin \$${widget.margin ?? 0}", style: const TextStyle(color: Colors.white54)),
+              Text("Margin \$${widget.margin ?? 0}", style: const TextStyle(color: Colors.black45)),
               const Expanded(child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5),
-                child: Divider(color: Colors.white54),
+                child: Divider(color: Colors.black45),
               )),
             ],
           ),
@@ -61,14 +61,14 @@ class _CardAccountDemoState extends State<CardAccountDemo> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Balance", style: TextStyle(color: Colors.white54, fontSize: 15)),
-                  Text("\$ ${widget.balance ?? "0.00"}", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white70))
+                  const Text("Balance", style: TextStyle(color: Colors.black45, fontSize: 15)),
+                  Text("\$ ${widget.balance ?? "0.00"}", style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black54))
                 ],
               ),
               // Column(
               //   crossAxisAlignment: CrossAxisAlignment.start,
               //   children: [
-              //     Text("Deposit : \$${widget.depositAmount ?? 0}", style: const TextStyle(color: Colors.white54, fontSize: 12)),
+              //     Text("Deposit : \$${widget.depositAmount ?? 0}", style: const TextStyle(color: Colors.black45, fontSize: 12)),
               //   ],
               // )
             ],

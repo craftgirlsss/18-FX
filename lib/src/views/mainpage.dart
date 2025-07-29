@@ -75,36 +75,36 @@ class _MainPageState extends State<MainPage>  with AutomaticKeepAliveClientMixin
             // sets the active color of the `BottomNavigationBar` if `Brightness` is light
             primaryColor: Colors.red),
             child: BottomNavigationBar(
-              items:  <BottomNavigationBarItem>[
+              items:  const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   activeIcon: Icon(Icons.newspaper_outlined, color: GlobalVariablesType.mainColor),
-                  icon: const Icon(Icons.newspaper_outlined, color: Color.fromARGB(255, 93, 93, 91)),
+                  icon: Icon(Icons.newspaper_outlined, color: Colors.black26),
                   label: 'Beranda',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Icon(Iconsax.card_outline, color: GlobalVariablesType.mainColor),
-                  icon: const Icon(Iconsax.card_outline, color: Color.fromARGB(255, 93, 93, 91)),
+                  icon: Icon(Iconsax.card_outline, color: Colors.black26),
                   label: 'Accounts',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Icon(HeroIcons.arrows_up_down, color: GlobalVariablesType.mainColor),
-                  icon: const Icon(HeroIcons.arrows_up_down, color:Color.fromARGB(255, 93, 93, 91)),
+                  icon: Icon(HeroIcons.arrows_up_down, color:Colors.black26),
                   label: 'Quotes',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: Icon(CupertinoIcons.settings, color: GlobalVariablesType.mainColor),
-                  icon: const Icon(CupertinoIcons.settings, color: Color.fromARGB(255, 93, 93, 91)),
+                  icon: Icon(CupertinoIcons.settings, color: Colors.black26),
                   label: 'Settings',
                 ),
               ],
               fixedColor: GlobalVariablesType.mainColor,
               currentIndex: selectedIndexGlobal.value,
-              unselectedItemColor: const Color.fromARGB(255, 93, 93, 91),
+              unselectedItemColor: Colors.black26,
               type: BottomNavigationBarType.fixed,
-              unselectedIconTheme: const IconThemeData(color: Colors.black38),
-              unselectedLabelStyle: const TextStyle(color: Color.fromARGB(255, 93, 93, 91)),
+              unselectedIconTheme: const IconThemeData(color: Colors.black26),
+              unselectedLabelStyle: const TextStyle(color: Colors.black26),
               showUnselectedLabels: true,
-              selectedLabelStyle: TextStyle(color:GlobalVariablesType.mainColor),
+              selectedLabelStyle: const TextStyle(color:GlobalVariablesType.mainColor),
               showSelectedLabels: true,
               enableFeedback: true,
               onTap: (index) {

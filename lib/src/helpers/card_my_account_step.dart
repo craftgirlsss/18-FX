@@ -21,14 +21,15 @@ class _CardMenuAccountState extends State<CardMenuAccount> {
     
   @override
   Widget build(BuildContext context) {
+    print("INI ID AKUN ${accountsController.userToken.value}");
     return Container(
       padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white24),
+        border: Border.all(color: Colors.black12),
         color: GlobalVariablesType.backgroundColor,
-        // boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 10)]
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,9 +40,9 @@ class _CardMenuAccountState extends State<CardMenuAccount> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Obx(() => Text(accountsController.detailTempModel.value?.response.personalDetail.name != null ? accountsController.detailTempModel.value!.response.personalDetail.name!.capitalize! : "Username", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white))),
-                  Obx(() => Text(accountsController.detailTempModel.value?.response.personalDetail.email ?? "username@email.com", style: const TextStyle(fontSize: 13, color: Colors.white54))),
-                  Obx(() => Text(accountsController.detailTempModel.value?.response.personalDetail.phone ?? "+62", style: const TextStyle(fontSize: 13, color: Colors.white54))),
+                  Obx(() => Text(accountsController.detailTempModel.value?.response.personalDetail.name != null ? accountsController.detailTempModel.value!.response.personalDetail.name!.capitalize! : "Username", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black))),
+                  Obx(() => Text(accountsController.detailTempModel.value?.response.personalDetail.email ?? "username@email.com", style: const TextStyle(fontSize: 13, color: Colors.black54))),
+                  Obx(() => Text(accountsController.detailTempModel.value?.response.personalDetail.phone ?? "+62", style: const TextStyle(fontSize: 13, color: Colors.black54))),
                 ],
               ),
               Image.asset('assets/images/ic_launcher.png', width: 60)
@@ -52,9 +53,9 @@ class _CardMenuAccountState extends State<CardMenuAccount> {
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(17),
-              border: Border.all(color: Colors.white38),
-              // color: Colors.white54,
-              // boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
+              border: Border.all(color: Colors.black12),
+              color: Colors.white,
+              boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,12 +74,12 @@ class _CardMenuAccountState extends State<CardMenuAccount> {
                     children: [
                       const DefaultTextStyle(
                         overflow: TextOverflow.clip,
-                        style: TextStyle(color: Colors.white60, fontFamily: "SF-Pro-Bold", fontWeight: FontWeight.normal, fontSize: 14),
+                        style: TextStyle(color: Colors.black54, fontFamily: "SF-Pro-Bold", fontWeight: FontWeight.normal, fontSize: 14),
                         child: Text("Status Pendaftaran")
                       ),
                       DefaultTextStyle(
                           overflow: TextOverflow.clip,
-                          style: const TextStyle(color: Colors.white54, fontFamily: "SF-Pro-Bold", fontWeight: FontWeight.normal, fontSize: 14),
+                          style: const TextStyle(color: Colors.black45, fontFamily: "SF-Pro-Bold", fontWeight: FontWeight.normal, fontSize: 14),
                           child: Text("STEP : ${steps.value}")
                       ),
                     ],
@@ -162,7 +163,7 @@ class _CardMenuAccountState extends State<CardMenuAccount> {
                         }
                       });
                     },
-                  child: Obx(() => tradingAccountController.isLoading.value ? const CupertinoActivityIndicator(color: Colors.black54) : const Text("Buat Akun Baru", style: TextStyle(color: Colors.black54, fontSize: 12), textAlign: TextAlign.center))
+                  child: Obx(() => tradingAccountController.isLoading.value ? const CupertinoActivityIndicator(color: Colors.black54) : const Text("Buat Akun Baru", style: TextStyle(color: Colors.white, fontSize: 12), textAlign: TextAlign.center))
                   ),
                 ),
               ],

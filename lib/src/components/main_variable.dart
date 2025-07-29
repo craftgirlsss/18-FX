@@ -5,57 +5,57 @@ class GlobalVariablesType extends StatelessWidget{
   const GlobalVariablesType({super.key});
   
   // url untuk mengarahkan webview
-  static String? urlWeb = "https://18fx.co.id";
+  static const String urlWeb = "https://18fx.co.id";
 
   // url terms & conditions
-  static String termsAndConditions = "https://18fx.co.id/about-us";
+  static const String termsAndConditions = "https://18fx.co.id/about-us";
 
   // terms and condition text
-  static String termsAndConditionsText = "Tentang Kami";
+  static const String termsAndConditionsText = "Tentang Kami";
 
   // String nama aplikasi
-  static String? nameApp = "App Name";
+  static const String nameApp = "App Name";
 
   // ucapan selamat datang untuk login
-  static String ucapanLogin = "Selamat datang";
+  static const String ucapanLogi = "Selamat datang";
 
   // ucapan selamat datang untuk login
-  static String showProfile = "Tampilkan Profil";
+  static const String showProfil = "Tampilkan Profil";
 
   // ucapan profilku
-  static String profileku = "Account Details";
+  static const String profilek = "Account Details";
 
   // ucapan selamat datang untuk login
-  static String ucapanSignUP = "Selesaikan Registrasi";
+  static const String ucapanSignUp = "Selesaikan Registrasi";
 
   // judul di page splash screen
-  static String? titleSplashScreen = "Log in to your account";
+  static const String titleSplashScreen = "Log in to your account";
 
   // deskripsi di page splashscreen
-  static String? descriptionSplashScreen = "Jadikan setiap peluang menguntungkan bersama 18FX";
+  static const String descriptionSplashScreen = "Jadikan setiap peluang menguntungkan bersama TridentPRO Futures";
 
   // Teks Login
-  static String? loginText = "MASUK";
+  static const String loginText = "MASUK";
 
   // Teks Submit
-  static String? submitText = "KONFIRMASI";
+  static const String submitText = "KONFIRMASI";
 
   // Teks SignUp
-  static String? signUpText = "DAFTAR";
+  static const String signUpText = "DAFTAR";
 
   // Teks lupa password
-  static String? forgotText = "Lupa Akun?";
+  static const String forgotText = "Lupa Akun?";
 
   // Teks lupa password
-  static String? rememberMeText = "Tetap Login";
+  static const String rememberMeText = "Tetap Login";
 
   // Teks agreement
-  static String? agreeText = "Saya setuju";
+  static const String agreeText = "Saya setuju";
 
   // Teks buat akun
-  static String? buatAkunText = "Tidak punya akun? Buat Akun";
-
-  static Color mainColor = const Color.fromRGBO(255,215,0, 1);
+  static const String buatAkunText = "Tidak punya akun? Buat Akun";
+  
+  static const Color mainColor = Color.fromRGBO(172, 185, 93, 1);
 
   static var gradientColor = [
     mainColor.withOpacity(0.5),
@@ -64,7 +64,7 @@ class GlobalVariablesType extends StatelessWidget{
     mainColor,
   ];
 
-  static Color mainTextColor = Colors.white;
+  static Color mainTextColor = Colors.black;
 
   static double defaultFontSize = 11;
 
@@ -101,7 +101,7 @@ class GlobalVariablesType extends StatelessWidget{
   ];
   
   // BackgroundColor all page
-  static Color? backgroundColor = Colors.black;
+  static Color? backgroundColor = Colors.white;
   
   // Color of text black
   static List<Color?> colorTextBlack = [

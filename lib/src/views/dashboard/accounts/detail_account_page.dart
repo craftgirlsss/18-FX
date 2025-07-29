@@ -1,12 +1,13 @@
+import 'package:delapanbelasfx/src/components/alerts.dart';
 import 'package:delapanbelasfx/src/components/custom_listtile.dart';
+import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/controllers/trading_account_controller.dart';
-import 'package:delapanbelasfx/src/views/dashboard/accounts/mutasi_akun.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'deposit_account.dart';
-import 'documents_account.dart';
+// import 'documents_account.dart';
 import 'internal_transfer.dart';
 import 'withdrawal_account.dart';
 
@@ -60,6 +61,7 @@ class _DetailAccountPageState extends State<DetailAccountPage> {
       child: DefaultTabController(
         length: DetailAccountPage.menuTab.length,
         child: Scaffold(
+          backgroundColor: GlobalVariablesType.backgroundColor,
           appBar: AppBar(
             title: Text("Real Akun ${widget.loginID}"),
             bottom: const TabBar(
@@ -76,10 +78,10 @@ class _DetailAccountPageState extends State<DetailAccountPage> {
                     children: [
                       ListTile(onTap: (){
                         Get.to(() => DepositAccount(akunTradingPengirim: widget.loginID, akunTradingID: detailAccount[0]['id'], jumlahBalance: detailAccount[0]['balance'], accountTradingCurrencyType: detailAccount[0]['currency'], rate: detailAccount[0]['fixed_rate']));
-                      }, title: const Text('Deposit', style: TextStyle(color: Colors.white70)), leading: const Icon(Iconsax.card_receive_bold, color: Colors.white70), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
+                      }, title: const Text('Deposit', style: TextStyle(color: Colors.black54)), leading: const Icon(Iconsax.card_receive_bold, color: Colors.black54), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
                       ListTile(onTap: (){
                         Get.to(() => WithdrawalAccount(akunTradingPenerima: widget.loginID, akunTradingID: detailAccount[0]['id'], jumlahBalance: detailAccount[0]['balance'], currencyType: detailAccount[0]['currency'], rate: detailAccount[0]['fixed_rate']));
-                      }, title: const Text('Withdrawal', style: TextStyle(color: Colors.white70)), leading: const Icon(Iconsax.card_send_bold, color: Colors.white70), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
+                      }, title: const Text('Withdrawal', style: TextStyle(color: Colors.black54)), leading: const Icon(Iconsax.card_send_bold, color: Colors.black54), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
                       ListTile(onTap: (){
                         Get.to(() => InternalTransfer(
                           accountNumber: widget.loginID,
@@ -87,24 +89,36 @@ class _DetailAccountPageState extends State<DetailAccountPage> {
                           accountTypeName: detailAccount[0]['type'],
                           accountCurrency: detailAccount[0]['currency'],
                         ));
-                      }, title: const Text('Internal Transfer', style: TextStyle(color: Colors.white70)), leading: const Icon(Iconsax.convert_bold, color: Colors.white70), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
+                      }, title: const Text('Internal Transfer', style: TextStyle(color: Colors.black54)), leading: const Icon(Iconsax.convert_bold, color: Colors.black54), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
                       ListTile(onTap: (){
-                        Get.to(() => const MutasiAkun());
-                      }, title: const Text('Riwayat DP & WD', style: TextStyle(color: Colors.white70)), leading: const Icon(OctIcons.clock_fill, color: Colors.white70), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
+                        // Get.to(() => const MutasiAkun());
+                        alertError(
+                          message: "Fitur masih dalam pengembangan",
+                          onTap: (){
+                            Get.back();
+                          },
+                        );
+                      }, title: const Text('Riwayat DP & WD', style: TextStyle(color: Colors.black54)), leading: const Icon(OctIcons.clock_fill, color: Colors.black54), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
                       ListTile(onTap: (){
-                        Get.to(() => const DocumentsAccount());
-                      }, title: const Text('Dokumen', style: TextStyle(color: Colors.white70)), leading: const Icon(Iconsax.document_1_bold, color: Colors.white70), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
-                      ListTile(onTap: (){}, title: const Text('Pengaturan Akun', style: TextStyle(color: Colors.white70)), leading: const Icon(Iconsax.setting_2_bold, color: Colors.white70), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
+                        alertError(
+                          message: "Fitur masih dalam pengembangan",
+                          onTap: (){
+                            Get.back();
+                          },
+                        );
+                        // Get.to(() => const DocumentsAccount());
+                      }, title: const Text('Dokumen', style: TextStyle(color: Colors.black54)), leading: const Icon(Iconsax.document_1_bold, color: Colors.black54), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
+                      ListTile(onTap: (){}, title: const Text('Pengaturan Akun', style: TextStyle(color: Colors.black54)), leading: const Icon(Iconsax.setting_2_bold, color: Colors.black54), trailing: const CupertinoListTileChevron(), minLeadingWidth: 13),
                     ],
                   );
                 case "info":
                   return ListView(
                     children: [
-                      ListTile(title: const Text('Balance', style: TextStyle(color: Colors.white54)), trailing: Text("\$ ${detailAccount[0]['balance']}", style: const TextStyle(color: Colors.white70)), minLeadingWidth: 13),
-                      ListTile(title: const Text('Leverage', style: TextStyle(color: Colors.white54)), trailing: Text("1:${detailAccount[0]['leverage'].toString().replaceRange(3, null, "")}", style: const TextStyle(color: Colors.white70)), minLeadingWidth: 13),
-                      ListTile(title: const Text('Fixed Rate', style: TextStyle(color: Colors.white54)), trailing: Text("${detailAccount[0]['fixed_rate']}", style: const TextStyle(color: Colors.white70)), minLeadingWidth: 13),
-                      ListTile(title: const Text('Currency', style: TextStyle(color: Colors.white54)), trailing: Text("${detailAccount[0]['currency']}", style: const TextStyle(color: Colors.white70)), minLeadingWidth: 13),
-                      const ListTile(title: Text('Server', style: TextStyle(color: Colors.white54)), trailing: Text("DelapanBelas-Live", style: TextStyle(color: Colors.white70)), minLeadingWidth: 13),
+                      ListTile(title: const Text('Balance', style: TextStyle(color: Colors.black45)), trailing: Text("\$ ${detailAccount[0]['balance']}", style: const TextStyle(color: Colors.black54)), minLeadingWidth: 13),
+                      ListTile(title: const Text('Leverage', style: TextStyle(color: Colors.black45)), trailing: Text("1:${detailAccount[0]['leverage'].toString().replaceRange(3, null, "")}", style: const TextStyle(color: Colors.black54)), minLeadingWidth: 13),
+                      ListTile(title: const Text('Fixed Rate', style: TextStyle(color: Colors.black45)), trailing: Text("${detailAccount[0]['fixed_rate']}", style: const TextStyle(color: Colors.black54)), minLeadingWidth: 13),
+                      ListTile(title: const Text('Currency', style: TextStyle(color: Colors.black45)), trailing: Text("${detailAccount[0]['currency']}", style: const TextStyle(color: Colors.black54)), minLeadingWidth: 13),
+                      const ListTile(title: Text('Server', style: TextStyle(color: Colors.black45)), trailing: Text("DelapanBelas-Live", style: TextStyle(color: Colors.black54)), minLeadingWidth: 13),
                     ],
                   );
                 case "transaksi":
@@ -157,6 +171,7 @@ class _NestedTabBarState extends State<NestedTabBar> with TickerProviderStateMix
       children: <Widget>[
         TabBar.secondary(
           controller: _tabController,
+          labelColor: GlobalVariablesType.mainColor,
           tabs: const <Widget>[Tab(text: 'OPEN'), Tab(text: 'PENDING'), Tab(text: 'CLOSED')],
         ),
         Expanded(

@@ -18,6 +18,7 @@ class DetailNews extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 width: size.width,
@@ -102,12 +103,18 @@ class DetailNews extends StatelessWidget {
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                child: Text(content != null ? content!.replaceAll('\\r\\n', ' ') : 'adalah perusahaan yang bergerak di bidang layanan pengembangan teknologi digital, khususnya jasa pembuatan website dan aplikasi mobile (Android & iOS). Kami berkomitmen untuk membantu pelaku usaha, organisasi, dan individu dalam menciptakan solusi digital yang modern, fungsional, dan sesuai kebutuhan bisnis. Dengan tim profesional yang berpengalaman di bidang UI/UX design, software engineering, dan mobile development, kami menyediakan layanan end-to-end mulai dari analisa kebutuhan, perancangan desain, pengembangan, hingga pemeliharaan sistem.', style: const TextStyle(color: Colors.white60)),
+                child: Text(cleanHTMLTags(content), style: const TextStyle(color: Colors.white60), textAlign: TextAlign.start),
+                // child: Text(content != null ? content!.replaceAll('\\r\\n', ' ') : 'adalah perusahaan yang bergerak di bidang layanan pengembangan teknologi digital, khususnya jasa pembuatan website dan aplikasi mobile (Android & iOS). Kami berkomitmen untuk membantu pelaku usaha, organisasi, dan individu dalam menciptakan solusi digital yang modern, fungsional, dan sesuai kebutuhan bisnis. Dengan tim profesional yang berpengalaman di bidang UI/UX design, software engineering, dan mobile development, kami menyediakan layanan end-to-end mulai dari analisa kebutuhan, perancangan desain, pengembangan, hingga pemeliharaan sistem.', style: const TextStyle(color: Colors.white60)),
               )
             ],
           ),
         ),
       ),
     );
+  }
+
+  String cleanHTMLTags(String? content){
+    RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
+    return content?.replaceAll(exp, '') ?? '-';
   }
 }

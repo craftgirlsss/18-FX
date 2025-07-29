@@ -50,7 +50,7 @@ class AccountsController extends GetxController{
       userID(stringUserID);
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/get-info-user")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/get-info-user")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -90,7 +90,7 @@ class AccountsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/utils/check-version")!,
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/utils/check-version")!,
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -155,7 +155,7 @@ class AccountsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/login-google")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/login-google")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -198,7 +198,7 @@ class AccountsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/login-google")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/login-google")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -264,7 +264,7 @@ class AccountsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/register")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/register")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -306,7 +306,7 @@ class AccountsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/otp")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/otp")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -337,7 +337,7 @@ class AccountsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/resend-otp")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/resend-otp")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -370,7 +370,7 @@ class AccountsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/send-otp")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/send-otp")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -398,11 +398,11 @@ class AccountsController extends GetxController{
   }
 
   // Forgot Password API
-  Future<bool> forgot({String? email, String? name, String? referalCode, String? password}) async {
+  Future<bool> forgot({String? email}) async {
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/forget")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/forget")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -433,7 +433,7 @@ class AccountsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/login")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/login")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -469,11 +469,11 @@ class AccountsController extends GetxController{
   // Change Password API
   Future<bool> changePasswordAPI({String? oldPassword, String? newPassword, bool? savedSessionLogin = false}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var id = prefs.getString('id');
+    var id = prefs.getString('iuser_idd');
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/change-password")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/change-password")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -512,11 +512,12 @@ class AccountsController extends GetxController{
     String? address
   }) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var id = prefs.getString('id');
+    var id = prefs.getString('user_id');
+    print(id);
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/profile")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/profile")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'

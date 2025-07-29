@@ -8,7 +8,7 @@ import 'package:delapanbelasfx/src/models/image_slider_models.dart';
 
 class UtilsController extends GetxController{
   var isLoading = false.obs;
-  RxString mainURL = "https://api.dbsolution.app".obs;
+  RxString mainURL = "https://api-tridentprofutures.techcrm.net".obs;
   RxString xAPIKey = "fewAHdSkx28301294cKSnczdAs".obs;
   RxString responseMessage = "".obs;
   Rxn<ImageSliderModels> responseImageSlider = Rxn<ImageSliderModels>();
@@ -21,13 +21,14 @@ class UtilsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.get(
-        Uri.tryParse("${mainURL.value}/util/slide")!, 
+        Uri.tryParse("${mainURL.value}/utils/slide")!, 
         headers: {
           'x-api-key': xAPIKey.value,
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       );
       var result = jsonDecode(response.body);
+      print("ini reuslt get image slider $result");
       isLoading(false);
       if (response.statusCode == 200) {
         responseImageSlider.value = ImageSliderModels.fromJson(result);
@@ -49,7 +50,7 @@ class UtilsController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.get(
-        Uri.tryParse("${mainURL.value}/util/news")!, 
+        Uri.tryParse("${mainURL.value}/utils/news")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'

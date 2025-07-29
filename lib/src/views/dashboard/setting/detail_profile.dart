@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
+import 'package:delapanbelasfx/src/components/alerts.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
@@ -78,7 +78,7 @@ class _DetailProfileState extends State<DetailProfile> {
   }
 
   Future<void> uploadImage({String? imagePath}) async {
-    final url = Uri.parse('https://api.dbsolution.app/avatar');
+    final url = Uri.parse('http://api-tridentprofutures.techcrm.net/avatar');
     final request = http.MultipartRequest('POST', url)
       ..headers.addAll({
         'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
@@ -114,16 +114,17 @@ class _DetailProfileState extends State<DetailProfile> {
 
   @override
   Widget build(BuildContext context) {
+    print(accountsController.detailTempModel.value?.response.personalDetail.urlPhoto );
     return GestureDetector(
       onTap: focusManager,
       child: Scaffold(
         backgroundColor: GlobalVariablesType.backgroundColor,
         appBar: kDefaultAppBarCustom(
           context, 
-          title: Text(GlobalVariablesType.profileku),
-          centerTitle: true,
+          title: const Text("Profilku", style: TextStyle(color: GlobalVariablesType.mainColor),),
+          centerTitle: false,
           actions: [
-            CupertinoButton(child: Text("Update", style: TextStyle(color: GlobalVariablesType.mainColor)), onPressed: () async {
+            CupertinoButton(child: const Text("Update", style: TextStyle(color: GlobalVariablesType.mainColor)), onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
               String? password = prefs.getString('password');
                if(await accountsController.editProfile(
@@ -133,7 +134,7 @@ class _DetailProfileState extends State<DetailProfile> {
                  tanggalLahir: birthDateController.text,
                  tempatLahir: birthDatePlaceController.text,
                  zip: zipController.text,
-               ) == true){
+               )){
                  await accountsController.login(
                    email: accountsController.detailTempModel.value?.response.personalDetail.email,
                    password: password,
@@ -142,6 +143,12 @@ class _DetailProfileState extends State<DetailProfile> {
                    Get.snackbar("Berhasil", "Berhasil ubah data profile", backgroundColor: Colors.white, colorText: Colors.black87);
                    Navigator.pop(context);
                  });
+               }else{
+                alertError(
+                  message: accountsController.responseMessage.value,
+                  title: "Gagal",
+                  onTap: () => Get.back()
+                );
                }
             })
            // checkingDataIsNull() == false ? Container() : Obx(
@@ -190,16 +197,21 @@ class _DetailProfileState extends State<DetailProfile> {
                     child: Center(
                       child: Stack(
                         children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            padding: const EdgeInsets.all(7),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.black.withOpacity(0.05),
-                              image: _imageFile == null ? accountsController.detailTempModel.value?.response.personalDetail.urlPhoto != null ? accountsController.detailTempModel.value?.response.personalDetail.urlPhoto == "-" ? const DecorationImage(image: AssetImage('assets/images/ic_launcher.png')) :  DecorationImage(image: NetworkImage(accountsController.detailTempModel.value!.response.personalDetail.urlPhoto!), fit: BoxFit.cover) : const DecorationImage(image: AssetImage('assets/images/empty_image.png'), fit: BoxFit.cover) : DecorationImage(image: FileImage(File(_imageFile!.path)), fit: BoxFit.cover)
-                            ),
-                          ),
+                          // Container(
+                          //   width: 100,
+                          //   height: 100,
+                          //   padding: const EdgeInsets.all(7),
+                          //   decoration: BoxDecoration(
+                          //     shape: BoxShape.circle,
+                          //     color: Colors.black.withOpacity(0.05),
+                          //     image: accountsController.detailTempModel.value?.response.personalDetail.urlPhoto == null || accountsController.detailTempModel.value?.response.personalDetail.urlPhoto == ""
+                          //       ? const DecorationImage(image: AssetImage('assets/images/ic_launcher.png'))
+                          //       : _imageFile == null 
+                          //         ? DecorationImage(image: NetworkImage("https://allmediaindo-2.s3.ap-southeast-1.amazonaws.com/dbsolution/${accountsController.detailTempModel.value!.response.personalDetail.urlPhoto!}"))
+                          //         : DecorationImage(image: FileImage(File(_imageFile!.path)), fit: BoxFit.cover)
+                          //     // image: _imageFile == null ? accountsController.detailTempModel.value?.response.personalDetail.urlPhoto != null ? accountsController.detailTempModel.value?.response.personalDetail.urlPhoto == "-" ? const DecorationImage(image: AssetImage('assets/images/ic_launcher.png')) :  DecorationImage(image: NetworkImage(accountsController.detailTempModel.value!.response.personalDetail.urlPhoto!), fit: BoxFit.cover) : const DecorationImage(image: AssetImage('assets/images/empty_image.png'), fit: BoxFit.cover) : DecorationImage(image: FileImage(File(_imageFile!.path)), fit: BoxFit.cover)
+                          //   ),
+                          // ),
                           Positioned(
                             bottom: 0,
                             right: 0,

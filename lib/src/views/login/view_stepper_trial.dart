@@ -351,7 +351,7 @@ class _StepperTrialPageState extends State<StepperTrialPage> {
                                         CupertinoPicker(
                                           itemExtent: 50,
                                           diameterRatio: 5,
-                                          backgroundColor: CupertinoColors.darkBackgroundGray,
+                                          backgroundColor: CupertinoColors.white,
                                           useMagnifier: true,
                                           scrollController: FixedExtentScrollController(initialItem: initialItem),
                                           onSelectedItemChanged: (index) {
@@ -465,7 +465,7 @@ class _StepperTrialPageState extends State<StepperTrialPage> {
                                               CupertinoPicker(
                                                 itemExtent: 50,
                                                 diameterRatio: 5,
-                                                backgroundColor: CupertinoColors.darkBackgroundGray,
+                                                backgroundColor: CupertinoColors.white,
                                                 useMagnifier: true,
                                                 scrollController: FixedExtentScrollController(initialItem: initialItem),
                                                 onSelectedItemChanged: (index) {
@@ -659,7 +659,7 @@ class _StepperTrialPageState extends State<StepperTrialPage> {
                           : () {
                               back();
                             },
-                      child: Text('Back', style: kDefaultTextStyleCustom(color: Colors.black, fontSize: 13),),
+                      child: Text('Back', style: kDefaultTextStyleCustom(color: Colors.white, fontSize: 13),),
                     ),
                   ),
                   const SizedBox(width: 5),
@@ -757,7 +757,7 @@ class _StepperTrialPageState extends State<StepperTrialPage> {
                             }
                           },
                         child: Text(
-                          currentStep == stepLength ? 'Finish' : 'Next', style: kDefaultTextStyleCustom(color: Colors.black, fontSize: 13),
+                          currentStep == stepLength ? 'Finish' : 'Next', style: kDefaultTextStyleCustom(color: Colors.white, fontSize: 13),
                         ),
                       ),
                     ),

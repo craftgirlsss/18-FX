@@ -7,7 +7,6 @@ import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/components/textstyle.dart';
 import 'package:delapanbelasfx/src/controllers/accounts_controller.dart';
 import 'package:delapanbelasfx/src/views/dashboard/markets/market_details.dart';
-import 'package:delapanbelasfx/src/views/dashboard/setting/detail_profile.dart';
 
 class MarketPage extends StatefulWidget {
   const MarketPage({super.key});
@@ -25,19 +24,8 @@ class _MarketPageState extends State<MarketPage> {
       children: [
         Scaffold(
           backgroundColor: GlobalVariablesType.backgroundColor,
-          appBar: appBarHomePage(
-            context, 
-            onPressedNotification: () {
-              Get.snackbar("Gagal", "Fitur masih dalam pengembangan", backgroundColor: Colors.white, colorText: Colors.black);
-              // Get.to(() => const NotificationPage());
-            }, 
-            onPressedProfile: (){
-              print("ditekan");
-              Get.to(() => const DetailProfile());
-            }, 
-            availableNotofication: true,
-            name: accountsController.accountsModels.value?.response?.personalDetail.name ?? "Unknonwn",
-            urlPhoto: accountsController.accountsModels.value?.response?.personalDetail.urlPhoto ?? "Unknonwn",
+          appBar: kDefaultAppBarTitle(
+            title: "Quotes",
           ),
           body: SingleChildScrollView(
             child: Column(

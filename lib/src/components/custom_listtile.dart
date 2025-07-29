@@ -20,25 +20,25 @@ class CustomListtile {
     String? tiketID
   }){
     return ExpansionTile(
-      backgroundColor: Colors.white10,
-      collapsedIconColor: Colors.white24,
-      iconColor: Colors.white,
-      collapsedBackgroundColor: Colors.white10,
+      backgroundColor: Colors.black12,
+      collapsedIconColor: const Color.fromRGBO(255, 255, 255, 0.239),
+      iconColor: Colors.black26,
+      collapsedBackgroundColor: Colors.black12,
       trailing: Text("${profit ?? 0}", style: TextStyle(color: profit! < 0 ? Colors.red : Colors.blue, fontSize: 14)),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RichText(
             text: TextSpan(
-              text: "$symbol",
-              style: const TextStyle(fontSize: 12),
+              text: symbol ?? "Market Name",
+              style: const TextStyle(fontSize: 12, color: Colors.black54),
               children: <TextSpan>[
-                TextSpan(text: "$orderType", style: TextStyle(color: orderType == "buy" || orderType == "buy limit" || orderType == "buy stop" ? Colors.blue : Colors.red, fontSize: 12)),
+                TextSpan(text: orderType ?? " Unknown Open Position", style: TextStyle(color: orderType == "buy" || orderType == "buy limit" || orderType == "buy stop" ? Colors.blue : Colors.red, fontSize: 12)),
               ],
             ),
           ),
           const SizedBox(height: 3),
-          Text("$lot lot from price $openPrice", style: const TextStyle(color: Colors.white38, fontSize: 12)),
+          Text("${lot ?? 0} lot from price $openPrice", style: const TextStyle(color: Colors.black38, fontSize: 12)),
         ],
       ),
       children: [
@@ -57,15 +57,15 @@ class CustomListtile {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text("T / P :", style: TextStyle(color: Colors.white38, fontSize: 12)),
-                          Text(" $tp", style: const TextStyle(color: Colors.white38, fontSize: 12)),
+                          const Text("T / P :", style: TextStyle(color: Colors.black38, fontSize: 12)),
+                          Text(" ${tp ?? 0}", style: const TextStyle(color: Colors.black38, fontSize: 12)),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text("ID :", style: TextStyle(color: Colors.white38, fontSize: 12)),
-                          Text(" #$tiketID", style: const TextStyle(color: Colors.white38, fontSize: 12)),
+                          const Text("ID :", style: TextStyle(color: Colors.black38, fontSize: 12)),
+                          Text(" #${tiketID ?? 0}", style: const TextStyle(color: Colors.black38, fontSize: 12)),
                         ],
                       ),
                     ],
@@ -82,15 +82,15 @@ class CustomListtile {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text("S / L :", style: TextStyle(color: Colors.white38, fontSize: 12)),
-                          Text(" $sl", style: const TextStyle(color: Colors.white38, fontSize: 12)),
+                          const Text("S / L :", style: TextStyle(color: Colors.black38, fontSize: 12)),
+                          Text(" ${sl ?? 0}", style: const TextStyle(color: Colors.black38, fontSize: 12)),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text("Open :", style: TextStyle(color: Colors.white38, fontSize: 12)),
-                          Text("${dateFormatted(time: DateTime.tryParse(openTime!)!.add(const Duration(hours: 7)))} WIB", overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.white38, fontSize: 12)),
+                          const Text("Open :", style: TextStyle(color: Colors.black38, fontSize: 12)),
+                          Expanded(child: Text("${openTime == null ? 0 : dateFormatted(time: DateTime.tryParse(openTime)!.add(const Duration(hours: 7)))} WIB", overflow: TextOverflow.ellipsis, style: const TextStyle(color: Colors.black38, fontSize: 12))),
                         ],
                       ),
                     ],

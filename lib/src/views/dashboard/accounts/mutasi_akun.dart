@@ -74,6 +74,7 @@ class _MutasiAkunState extends State<MutasiAkun> {
       child: Stack(
         children: [
           Scaffold(
+            backgroundColor: GlobalVariablesType.backgroundColor,
             appBar: AppBar(
               title: const Text("Riwayat Deposit & Withdrawal"),
             ),

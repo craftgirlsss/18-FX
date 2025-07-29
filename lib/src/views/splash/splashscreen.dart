@@ -1,7 +1,6 @@
 import 'package:delapanbelasfx/src/components/alerts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/controllers/accounts_controller.dart';
 import 'package:delapanbelasfx/src/views/mainpage.dart';
 import 'package:delapanbelasfx/src/views/splash/introduction_screen.dart';
@@ -23,6 +22,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     super.initState();
     accountsController.checkMyVersionApp().then((version) async {
+      print("Ini versi aplikasi => $version");
       accountsController.compareVersionApp(version: version).then((success){
         if(success){
           Future.delayed(Duration.zero).then((value) async {
@@ -49,7 +49,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: GlobalVariablesType.backgroundColor,
+      backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           child: Column(

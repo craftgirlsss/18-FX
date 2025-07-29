@@ -125,7 +125,7 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
             extendBodyBehindAppBar: false,
             backgroundColor: GlobalVariablesType.backgroundColor,
             appBar: kDefaultAppBarCustom(context, actions: [
-              CupertinoButton(child: Icon(CupertinoIcons.info, color: GlobalVariablesType.mainColor), onPressed: (){
+              CupertinoButton(child: const Icon(CupertinoIcons.info, color: GlobalVariablesType.mainColor), onPressed: (){
                 alertDialogCustomInfo(
                   title: "Informasi",
                   message: "Penuhi semua field terlebih dahulu kecuali OTP, karena waktu tunggu OTP hanya 90 detik. Jika waktu tunggu OTP sudah berakhir, maka anda tidak bisa submit form",
@@ -134,7 +134,9 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
                   }
                 );
               })
-            ]),
+            ],
+            title: const Text("Registrasi", style: TextStyle(color: GlobalVariablesType.mainColor))
+            ),
             body: Form(
               key: formKey,
               child: ListView(
@@ -143,12 +145,12 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset('assets/images/ic_launcher.png', width: size.width / 6, height: size.width / 6),
-                      const SizedBox(height: 15),
-                      Text("Registrasi", style: kDefaultTextStyleSubtitleSplashScreen()),
+                      Image.asset('assets/images/ic_launcher.png', width: size.width / 2),
+                      const Text("Registrasi", style: TextStyle(color: GlobalVariablesType.mainColor, fontWeight: FontWeight.bold, fontSize: 25)),
+                      const SizedBox(height: 6),
                       SizedBox(
                         width: size.width / 1.5,
-                        child: const Text("Raih peluang investasi dengan bergabung bersama 18 FX", style: TextStyle(color: Colors.white38), textAlign: TextAlign.center,)),
+                        child: const Text("Raih peluang investasi dengan bergabung bersama TridentPRO Futures", style: TextStyle(color: GlobalVariablesType.mainColor), textAlign: TextAlign.center,)),
                     ],
                   ),
                   const SizedBox(height: 15),
@@ -202,10 +204,10 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
-                            color: GlobalVariablesType.mainColor.withOpacity(0.3),
+                            color: GlobalVariablesType.mainColor.withOpacity(0.2),
                             border: Border.all(color: GlobalVariablesType.mainColor)
                           ),
-                          child: Center(child: Obx(() => Text(selectedPhone.value == 0 ? "+62" : "+${phoneUtils.countryCode[selectedPhone.value]['code']}", style: TextStyle(color: GlobalVariablesType.mainColor, fontSize: 15), overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,))),
+                          child: Center(child: Obx(() => Text(selectedPhone.value == 0 ? "+62" : "+${phoneUtils.countryCode[selectedPhone.value]['code']}", style: const TextStyle(color: GlobalVariablesType.mainColor, fontSize: 15, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,))),
                         ),
                       ),
                       const SizedBox(width: 15),
@@ -217,6 +219,12 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
                             onTapSendOTP: accountsController.isLoading.value || secondsRemaining.value > 0 ? null : (){
                               accountsController.sendOTP(phone: noHPController.text, phoneCode: phoneUtils.countryCode[selectedPhone.value]['code']).then((result){
                                 if(result){
+                                  alertDialogCustomSuccess(
+                                    message: "Pesan berhasil dikirim",
+                                    onTap: () => Get.back(),
+                                    textButton: "OK",
+                                    title: "Berhasil"
+                                  );
                                   secondsRemaining(90);
                                   resendCode();
                                   showOTPField(true);
@@ -263,10 +271,10 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
                     style: kDefaultTextStyleCustom(fontSize: 13),
                     decoration: InputDecoration(
                       hintText: "Atur kata sandi akun anda",
-                      prefixIcon: Icon(Icons.password, color: GlobalVariablesType.mainColor),
+                      prefixIcon: const Icon(Icons.password, color: GlobalVariablesType.mainColor),
                       errorStyle: kDefaultTextStyleCustom(color: Colors.red),
                       labelText: "Kata Sandi*",
-                      labelStyle: TextStyle(color: GlobalVariablesType.mainColor),
+                      labelStyle: const TextStyle(color: GlobalVariablesType.mainColor),
                       hintStyle: TextStyle(color: Colors.white24, fontSize: GlobalVariablesType.defaultFontSize),
                       filled: false,
                       suffix: GestureDetector(
@@ -275,19 +283,19 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
                             tampilsandipasswordbaru1 = !tampilsandipasswordbaru1;
                           });
                         },
-                        child: tampilsandipasswordbaru1 == true ?  Icon(Icons.visibility, color: GlobalVariablesType.mainColor) :  Icon(Icons.visibility_off, color: GlobalVariablesType.mainColor),
+                        child: tampilsandipasswordbaru1 == true ?  const Icon(Icons.visibility, color: GlobalVariablesType.mainColor) :  const Icon(Icons.visibility_off, color: GlobalVariablesType.mainColor),
                       ),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
                           color:GlobalVariablesType.mainColor
                         )
                       ),
-                      enabledBorder: UnderlineInputBorder(
+                      enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
                           color:GlobalVariablesType.mainColor
                         )
                       ),
-                      border: UnderlineInputBorder(
+                      border: const UnderlineInputBorder(
                         borderSide: BorderSide(
                           color:GlobalVariablesType.mainColor
                         )
@@ -320,10 +328,10 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
                     },
                     decoration: InputDecoration(
                       hintText: "Ketik ulang kata sandi",
-                      prefixIcon: Icon(Icons.password, color: GlobalVariablesType.mainColor),
+                      prefixIcon: const Icon(Icons.password, color: GlobalVariablesType.mainColor),
                       errorStyle: kDefaultTextStyleCustom(color: Colors.red),
                       labelText: "Konfirmasi Kata Sandi*",
-                      labelStyle: TextStyle(color: GlobalVariablesType.mainColor),
+                      labelStyle: const TextStyle(color: GlobalVariablesType.mainColor),
                       hintStyle: TextStyle(color: Colors.white38, fontSize: GlobalVariablesType.defaultFontSize),
                       filled: false,
                       suffix: GestureDetector(
@@ -332,19 +340,19 @@ class _RegisterAccountV2State extends State<RegisterAccountV2> {
                             tampilsandipasswordbaru2 = !tampilsandipasswordbaru2;
                           });
                         },
-                        child: tampilsandipasswordbaru2 == true ?  Icon(Icons.visibility, color: GlobalVariablesType.mainColor) :  Icon(Icons.visibility_off, color: GlobalVariablesType.mainColor),
+                        child: tampilsandipasswordbaru2 == true ?  const Icon(Icons.visibility, color: GlobalVariablesType.mainColor) :  const Icon(Icons.visibility_off, color: GlobalVariablesType.mainColor),
                       ),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
                           color:GlobalVariablesType.mainColor
                         )
                       ),
-                      enabledBorder: UnderlineInputBorder(
+                      enabledBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
                           color:GlobalVariablesType.mainColor
                         )
                       ),
-                      border: UnderlineInputBorder(
+                      border: const UnderlineInputBorder(
                         borderSide: BorderSide(
                           color:GlobalVariablesType.mainColor
                         )

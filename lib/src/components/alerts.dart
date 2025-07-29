@@ -1,3 +1,4 @@
+import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -59,7 +60,7 @@ alertDialogSignOut(context){
 
 alertDialogSuccess(Function()? onTap){
   return Get.defaultDialog(
-    backgroundColor: CupertinoColors.darkBackgroundGray,
+    backgroundColor: GlobalVariablesType.backgroundColor,
     radius: 30,
     barrierDismissible: false,
     title: "",
@@ -67,9 +68,9 @@ alertDialogSuccess(Function()? onTap){
       children: [
         Lottie.asset('assets/json/success.json', repeat: true,frameRate: const FrameRate(50)),
         const SizedBox(height: 10),
-        Text("Berhasil", style: kDefaultTextStyleTitleAppBar(fontSize: 18, fontWeight: FontWeight.bold),),
+        const Text("Berhasil", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black54),),
         const SizedBox(height: 5),
-        const Text("Berhasil membuat akun. Silahkan cek pesan masuk pada nomor HP yang anda daftarkan sebelumnya", style: TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.white38), textAlign: TextAlign.center)
+        const Text("Berhasil membuat akun. Silahkan cek pesan masuk pada nomor HP yang anda daftarkan sebelumnya", style: TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black45), textAlign: TextAlign.center)
       ],
     ),
     actions: [
@@ -91,7 +92,7 @@ alertDialogSuccess(Function()? onTap){
 
 alertDialogCustomSuccess({Function()? onTap, String? message, String? title, String? textButton}){
   return Get.defaultDialog(
-    backgroundColor: CupertinoColors.darkBackgroundGray,
+    backgroundColor: GlobalVariablesType.backgroundColor,
     radius: 30,
     barrierDismissible: false,
     title: "",
@@ -99,9 +100,9 @@ alertDialogCustomSuccess({Function()? onTap, String? message, String? title, Str
       children: [
         Lottie.asset('assets/json/success.json', repeat: true,frameRate: const FrameRate(50)),
         const SizedBox(height: 10),
-        Text(title ?? "Berhasil", style: kDefaultTextStyleTitleAppBar(fontSize: 18, fontWeight: FontWeight.bold),),
+        Text(title ?? "Berhasil", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black54),),
         const SizedBox(height: 5),
-        Text(message ?? "Berhasil", style: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.white38), textAlign: TextAlign.center)
+        Text(message ?? "Berhasil", style: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black45), textAlign: TextAlign.center)
       ],
     ),
     actions: [
@@ -123,17 +124,17 @@ alertDialogCustomSuccess({Function()? onTap, String? message, String? title, Str
 
 alertDialogCustomInfo({Function()? onTap, String? message, String? title, String? textButton}){
   return Get.defaultDialog(
-    backgroundColor: CupertinoColors.darkBackgroundGray,
+    backgroundColor: GlobalVariablesType.backgroundColor,
     radius: 30,
     barrierDismissible: false,
     title: "",
     content: Column(
       children: [
-        const Icon(CupertinoIcons.info, size: 60, color: Colors.white70),
+        const Icon(CupertinoIcons.info, size: 60, color: Colors.black45),
         const SizedBox(height: 10),
-        Text(title ?? "Berhasil", style: const TextStyle(color: Colors.white70, fontSize: 18, fontWeight: FontWeight.bold),),
+        Text(title ?? "Berhasil", style: const TextStyle(color: Colors.black54, fontSize: 18, fontWeight: FontWeight.bold),),
         const SizedBox(height: 5),
-        Text(message ?? "Berhasil", style: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.white38), textAlign: TextAlign.center)
+        Text(message ?? "Berhasil", style: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black45), textAlign: TextAlign.center)
       ],
     ),
     actions: [
@@ -155,7 +156,7 @@ alertDialogCustomInfo({Function()? onTap, String? message, String? title, String
 
 alertError({Function()? onTap, String? message, String? title}){
   return Get.defaultDialog(
-    backgroundColor: CupertinoColors.darkBackgroundGray,
+    backgroundColor: CupertinoColors.white,
     radius: 30,
     barrierDismissible: false,
     title: "",
@@ -163,9 +164,9 @@ alertError({Function()? onTap, String? message, String? title}){
       children: [
         Lottie.asset('assets/json/close.json', repeat: true,frameRate: const FrameRate(50)),
         const SizedBox(height: 10),
-        Text(title ?? "Gagal", style: kDefaultTextStyleTitleAppBar(fontSize: 18, fontWeight: FontWeight.bold),),
+        Text(title ?? "Gagal", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black54),),
         const SizedBox(height: 5),
-        Text(message ?? "Galat", style: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.white38), textAlign: TextAlign.center)
+        Text(message ?? "Galat", style: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal, color: Colors.black45), textAlign: TextAlign.center)
       ],
     ),
     actions: [
@@ -190,15 +191,15 @@ whatsNew({String? versionApp, DateTime? time}){
     contentPadding: const EdgeInsets.symmetric(horizontal: 20),
     radius: 20,
     titlePadding: const EdgeInsets.only(top: 20, bottom: 10),
-    backgroundColor: Colors.white24,
+    backgroundColor: Colors.white,
     confirm: TextButton(
       onPressed: (){
         Get.back();
       },
-      child: const Text("OK", style: TextStyle(color: Colors.white),)
+      child: const Text("OK", style: TextStyle(color: Colors.black54),)
     ),
     title: "What's New Version $versionApp\n${DateFormat('MMMM, dd yyyy').format(time!)}",
-    titleStyle: const TextStyle(color: Colors.white, fontSize: 15),
+    titleStyle: const TextStyle(color: Colors.black45, fontSize: 15),
     content: const Text("""
 1. Menambah fitur pembuatan akun Demo pada tab Accounts
 2. Halaman awal pembuaan akun Real, jika anda sudah memiliki akun Demo, maka anda akan diarahkan ke halaman awal untuk pembuatan akun Real.
@@ -206,6 +207,6 @@ whatsNew({String? versionApp, DateTime? time}){
 3. Halaman Detail News ketika anda mengklik daftar news pada tab Home pada section News Sentiment
 4. Halaman Detail Akun Real, Tap pada card akun real pada tab akun, maka anda akan diarahkan ke halaman detail tentang Real Akun,
 5. Pop up what's new setiap ada update terbaru
-""", style: TextStyle(color: Colors.white60, fontSize: 13))
+""", style: TextStyle(color: Colors.black38, fontSize: 13))
     );
   }

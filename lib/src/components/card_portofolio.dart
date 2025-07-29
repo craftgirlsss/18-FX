@@ -68,7 +68,7 @@ class _CardPortofolioState extends State<CardPortofolio> {
                         isView = !isView!;
                       });
                     }, 
-                    icon: isView == true ? const Icon(CupertinoIcons.eye, size: 20, color: Colors.white,) : const Icon(CupertinoIcons.eye_slash_fill, size: 20, color: Colors.white,),
+                    icon: isView == true ? const Icon(CupertinoIcons.eye, size: 20, color: Colors.black,) : const Icon(CupertinoIcons.eye_slash_fill, size: 20, color: Colors.white,),
                   ),
                 ],
               ),

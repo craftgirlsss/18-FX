@@ -4,7 +4,7 @@ import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'textstyle.dart';
 
 ElevatedButton kDefaultButtonLogin({
-  Color? textColor = Colors.black,
+  Color? textColor = Colors.white,
   Function()? onPressed, String? title, Color? backgroundColor}){
   return ElevatedButton(
     onPressed: onPressed,
@@ -13,7 +13,7 @@ ElevatedButton kDefaultButtonLogin({
       backgroundColor: backgroundColor ?? GlobalVariablesType.mainColor,
       elevation: 0
     ), 
-    child: Text(title ?? GlobalVariablesType.loginText!, style: kDefaultTextStyleButton(
+    child: Text(title ?? GlobalVariablesType.loginText, style: kDefaultTextStyleButton(
       color: textColor
     )));
 }
@@ -25,7 +25,7 @@ ElevatedButton kDefaultButtonLoginWithGoogle({Function()? onPressed, String? tit
     style: ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       backgroundColor: backgroundColor ?? GlobalVariablesType.mainColor,
-      elevation: 0
+      elevation: 5
     ), 
     child: Padding(
       padding: EdgeInsets.zero,
@@ -35,7 +35,7 @@ ElevatedButton kDefaultButtonLoginWithGoogle({Function()? onPressed, String? tit
           Image.asset('assets/icons/google.png', width: 20),
           // const Icon(IonIcons.logo_google, size: 18, color: Colors.black54),
           const SizedBox(width: 10),
-          Text(title ?? GlobalVariablesType.loginText!, style: kDefaultTextStyleButton(color: Colors.black54)),
+          Text(title ?? GlobalVariablesType.loginText, style: kDefaultTextStyleButton(color: Colors.black54)),
         ],
       ),
     ));
@@ -90,17 +90,36 @@ class CustomCupertinoButton {
   static tint({Function()? onPressed, String? title, IconData? iconData}){
     return CupertinoButton(
       borderRadius: BorderRadius.circular(50),
-      color: const Color.fromRGBO(25, 39, 68, 1),
+      color: GlobalVariablesType.mainColor,
       padding: EdgeInsets.zero,
       onPressed: onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Icon(iconData ?? CupertinoIcons.play_arrow_solid, color: const Color.fromRGBO(75, 131, 252, 1)),
-          Icon(iconData ?? CupertinoIcons.play_arrow_solid, color: Colors.white60, size: 20),
-          const SizedBox(width: 3),
+          Icon(iconData ?? CupertinoIcons.play_arrow_solid, color: Colors.white, size: 20),
+          const SizedBox(width: 5),
           // Text(title ?? "Button", style: const TextStyle(fontSize: 15, color: Color.fromRGBO(75, 131, 252, 1), fontFamily: "SFPro-Medium")),
-          Text(title ?? "Button", style: const TextStyle(fontSize: 15, color: Colors.white60, fontFamily: "SFPro-Medium")),
+          Text(title ?? "Button", style: const TextStyle(fontSize: 15, color: Colors.white, fontFamily: "SFPro-Medium")),
+        ],
+      ),
+    );
+  }
+
+  static tintTransparent({Function()? onPressed, String? title, IconData? iconData}){
+    return CupertinoButton(
+      borderRadius: BorderRadius.circular(50),
+      color: GlobalVariablesType.backgroundColor,
+      padding: EdgeInsets.zero,
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // Icon(iconData ?? CupertinoIcons.play_arrow_solid, color: const Color.fromRGBO(75, 131, 252, 1)),
+          Icon(iconData ?? CupertinoIcons.play_arrow_solid, color: Colors.black45, size: 20),
+          const SizedBox(width: 5),
+          // Text(title ?? "Button", style: const TextStyle(fontSize: 15, color: Color.fromRGBO(75, 131, 252, 1), fontFamily: "SFPro-Medium")),
+          Text(title ?? "Button", style: const TextStyle(fontSize: 15, color: Colors.black45, fontFamily: "SFPro-Medium")),
         ],
       ),
     );

@@ -38,16 +38,16 @@ class _FailedVersionAppState extends State<FailedVersionApp> {
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: DefaultTextStyle(
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: Colors.black45, fontSize: 16),
                         child: Text("Your Version app is depreceted, please update for new version", textAlign: TextAlign.center)),
                   ),
                   SizedBox(
                       width: size.width / 2,
                       child: Platform.isAndroid ? OutlinedButton.icon(
                         style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: GlobalVariablesType.mainColor)
+                          side: const BorderSide(color: GlobalVariablesType.mainColor)
                         ),
-                          label: const Text("Update via Play Store", style: TextStyle(color: Colors.white)),
+                          label: const Text("Update via Play Store", style: TextStyle(color: Colors.black45)),
                           onPressed: (){
                             if (Platform.isAndroid || Platform.isIOS) {
                               final appId = Platform.isAndroid ? 'YOUR_ANDROID_PACKAGE_ID' : 'YOUR_IOS_APP_ID';
@@ -59,13 +59,13 @@ class _FailedVersionAppState extends State<FailedVersionApp> {
                                 mode: LaunchMode.externalApplication,
                               );
                             }
-                          }, icon: Icon(Icons.android_sharp, color: GlobalVariablesType.mainColor)
+                          }, icon: const Icon(Icons.android_sharp, color: GlobalVariablesType.mainColor)
                       ) : OutlinedButton.icon(
                             style: OutlinedButton.styleFrom(
-                                side: BorderSide(color: GlobalVariablesType.mainColor)
+                                side: const BorderSide(color: GlobalVariablesType.mainColor)
                             ),
                             label: const Text("Update from App Store", style: TextStyle(color: Colors.white)),
-                            onPressed: (){}, icon: Icon(Icons.apple, color: GlobalVariablesType.mainColor)
+                            onPressed: (){}, icon: const Icon(Icons.apple, color: GlobalVariablesType.mainColor)
                       )
                   ),
 

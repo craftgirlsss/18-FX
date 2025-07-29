@@ -1,9 +1,9 @@
+import 'package:delapanbelasfx/src/components/alerts.dart';
 import 'package:delapanbelasfx/src/components/buttons.dart';
 import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/helpers/format_currencies.dart';
 import 'package:delapanbelasfx/src/views/dashboard/accounts/deposit_account.dart';
 import 'package:delapanbelasfx/src/views/dashboard/accounts/detail_account_page.dart';
-import 'package:delapanbelasfx/src/views/dashboard/accounts/documents_account.dart';
 import 'package:delapanbelasfx/src/views/dashboard/accounts/internal_transfer.dart';
 import 'package:delapanbelasfx/src/views/dashboard/accounts/withdrawal_account.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,9 +45,9 @@ class _CardAccountRealState extends State<CardAccountReal> {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.white24),
+            border: Border.all(color: Colors.black12),
             color: GlobalVariablesType.backgroundColor,
-            // boxShadow: const [BoxShadow(color: Colors.white54, blurRadius: 3, offset: Offset(3, 3))]
+            boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 10)]
           ),
           child: Column(
             children: [
@@ -57,22 +57,22 @@ class _CardAccountRealState extends State<CardAccountReal> {
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white54),
-                      color: Colors.white24,
+                      border: Border.all(color: Colors.black12),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(7)
                     ),
-                    child: Center(child: Text("REAL - ${widget.tradingIDNumber ?? '0'}", style: const TextStyle(color: Colors.white60, fontWeight: FontWeight.bold))),
+                    child: Center(child: Text("REAL - ${widget.tradingIDNumber ?? '0'}", style: const TextStyle(color: Colors.black54, fontWeight: FontWeight.bold))),
                   ),
                   const SizedBox(width: 5),
                   Container(
                     width: 50,
                     padding: const EdgeInsets.all(3),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white54),
+                      border: Border.all(color: Colors.black12),
                       color: Colors.white24,
                       borderRadius: BorderRadius.circular(7)
                     ),
-                    child: Center(child: Text(widget.currencyType ?? "AN", style: const TextStyle(color: Colors.white60, fontWeight: FontWeight.bold))),
+                    child: Center(child: Text(widget.currencyType ?? "AN", style: const TextStyle(color: Colors.black54, fontWeight: FontWeight.bold))),
                   ),
                   widget.showTransferMenu == true ? CupertinoButton(
                     onPressed: (){
@@ -85,9 +85,9 @@ class _CardAccountRealState extends State<CardAccountReal> {
                     },
                     child: const Row(
                       children: [
-                        Icon(MingCute.transfer_line, color: Colors.white70, size: 15),
+                        Icon(MingCute.transfer_line, color: Colors.black38, size: 15),
                         SizedBox(width: 3),
-                        Text("Transfer", style: TextStyle(color: Colors.white70, fontSize: 13)),
+                        Text("Transfer", style: TextStyle(color: Colors.black45, fontSize: 13)),
                       ],
                     )
                   ).paddingZero.marginZero : const SizedBox(),
@@ -100,8 +100,8 @@ class _CardAccountRealState extends State<CardAccountReal> {
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Free Margin", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white70)),
-                      Text("79% Equity", style: TextStyle(color: Colors.white38, fontSize: 12)),
+                      Text("Free Margin", style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black54)),
+                      Text("100% Equity", style: TextStyle(color: Colors.black45, fontSize: 12)),
                     ],
                   ),
                   SizedBox(
@@ -118,13 +118,13 @@ class _CardAccountRealState extends State<CardAccountReal> {
                             GaugeAnnotation(
                               angle: 90,
                               // widget: Text(progressValue.toStringAsFixed(0), style: const TextStyle(fontSize: 11),
-                              widget: Text("79%", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white70),
+                              widget: Text("100%", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black45),
                               )
                             )
                           ],
                           pointers: const [
                             RangePointer(
-                              value: 79,
+                              value: 100,
                               cornerStyle: CornerStyle.bothCurve,
                               width: 0.2,
                               sizeUnit: GaugeSizeUnit.factor,
@@ -133,7 +133,7 @@ class _CardAccountRealState extends State<CardAccountReal> {
                           axisLineStyle: const AxisLineStyle(
                             thickness: 0.2,
                             cornerStyle: CornerStyle.bothCurve,
-                            color:Color.fromARGB(78, 25, 184, 195),
+                            color:Colors.black12,
                             thicknessUnit: GaugeSizeUnit.factor,
                           ),
                         )
@@ -150,8 +150,8 @@ class _CardAccountRealState extends State<CardAccountReal> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text("Balance", style: TextStyle(color: Colors.white60, fontSize: 15)),
-                        Text("\$ ${widget.balance ?? "0.00"}" , style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white70)),
+                        const Text("Balance", style: TextStyle(color: Colors.black45, fontSize: 15)),
+                        Text("\$ ${widget.balance ?? "0.00"}" , style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black45)),
                       ],
                     ),
                   ),
@@ -159,18 +159,19 @@ class _CardAccountRealState extends State<CardAccountReal> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text("Total Deposit : ${widget.depositAmount != null ? formatCurrencyUs.format(int.tryParse(widget.depositAmount!)) : '\$ 0'}", style: const TextStyle(color: Colors.white54, fontSize: 12)),
-                        Text("Total Withdrawal : ${widget.withdrawalAmount != null ? formatCurrencyUs.format(int.tryParse(widget.withdrawalAmount!)) : '\$ 0'}", style: const TextStyle(color: Colors.white54, fontSize: 12)),
+                        Text("Total Deposit : ${widget.depositAmount != null ? formatCurrencyId.format(int.tryParse(widget.depositAmount!)) : 'IDR 0'}", style: const TextStyle(color: Colors.black38, fontSize: 12)),
+                        Text("Total Withdrawal : ${widget.withdrawalAmount != null ? formatCurrencyId.format(int.tryParse(widget.withdrawalAmount!)) : '\$ 0'}", style: const TextStyle(color: Colors.black38, fontSize: 12)),
                       ],
                     ),
                   )
                 ],
               ),
               const SizedBox(height: 10),
+              const Divider(),
               Row(
                 children: [
                   Expanded(
-                    child: CustomCupertinoButton.tint(
+                    child: CustomCupertinoButton.tintTransparent(
                       title: "Deposit",
                       iconData: CupertinoIcons.tray_arrow_down_fill,
                       onPressed: (){
@@ -180,7 +181,7 @@ class _CardAccountRealState extends State<CardAccountReal> {
                   ),
                   const SizedBox(width: 4),
                   Expanded(
-                    child: CustomCupertinoButton.tint(
+                    child: CustomCupertinoButton.tintTransparent(
                       title: "Withdrawal",
                       iconData: CupertinoIcons.tray_arrow_up_fill,
                       onPressed: (){
@@ -190,11 +191,18 @@ class _CardAccountRealState extends State<CardAccountReal> {
                   ),
                   const SizedBox(width: 4),
                   Expanded(
-                    child: CustomCupertinoButton.tint(
+                    child: CustomCupertinoButton.tintTransparent(
                       title: "Dokumen",
                       iconData: CupertinoIcons.doc_person_fill,
                       onPressed: (){
-                        Get.to(() => const DocumentsAccount());
+                        alertError(
+                          message: "Fitur masih dalam proses pengembangan",
+                          onTap: (){
+                            Get.back();
+                          },
+                          title: "Gagal"
+                        );
+                        // Get.to(() => const DocumentsAccount());
                       }
                     )
                   )

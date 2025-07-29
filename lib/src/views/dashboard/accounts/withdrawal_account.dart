@@ -83,9 +83,10 @@ class _WithdrawalAccountState extends State<WithdrawalAccount> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
+        backgroundColor: GlobalVariablesType.backgroundColor,
         appBar: AppBar(
-          title: Text("Withdrawal Akun #ID${widget.akunTradingPenerima}", style: TextStyle(color: GlobalVariablesType.mainColor, fontSize: 16)),
-          iconTheme: CupertinoIconThemeData(color: GlobalVariablesType.mainColor),
+          title: Text("Withdrawal Akun #ID${widget.akunTradingPenerima}", style: const TextStyle(color: Colors.white, fontSize: 16)),
+          iconTheme: const CupertinoIconThemeData(color: Colors.white),
         ),
         body: SingleChildScrollView(
           child: Form(

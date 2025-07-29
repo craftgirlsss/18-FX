@@ -11,7 +11,7 @@ AppBar kDefaultAppBarTitle({String? title, double? fontSize, bool? centerTitle})
     centerTitle: centerTitle ?? false,
     backgroundColor: GlobalVariablesType.backgroundColor,
     automaticallyImplyLeading: GlobalVariablesType.autoImplyLeadingAppBarFalse,
-    title: Text(title ?? GlobalVariablesType.titleSplashScreen!, style: kDefaultTextStyleTitleAppBar(fontSize: 18)),
+    title: Text(title ?? GlobalVariablesType.titleSplashScreen, style: kDefaultTextStyleTitleAppBar(fontSize: 18)),
   );
 }
 

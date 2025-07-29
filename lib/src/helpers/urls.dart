@@ -1,3 +1,3 @@
 class UrlData{
-  // final String? _server_1 = "https://api.dbsolution.app";
+  // final String? _server_1 = "http://api-tridentprofutures.techcrm.net";
 }

@@ -78,7 +78,7 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: GlobalVariablesType.backgroundColor,
           appBar: GlobalAppBar.appbarMainPage(
             actions: [
               CupertinoButton(
@@ -87,7 +87,7 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                   decoration: BoxDecoration(
-                    color: Colors.white24,
+                    color: Colors.black26,
                     borderRadius: BorderRadius.circular(20)),
                   child: const Row(
                     children: [
@@ -100,17 +100,17 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
               ),
               CupertinoButton(
                 padding: EdgeInsets.zero,
-                child: const Icon(CupertinoIcons.bell, color: Colors.white), onPressed: (){}
+                child: const Icon(CupertinoIcons.bell, color: Colors.black), onPressed: (){}
               ),
               CupertinoButton(
                 padding: EdgeInsets.zero,
-                child: const Icon(CupertinoIcons.profile_circled, color: Colors.white), onPressed: (){
+                child: const Icon(CupertinoIcons.profile_circled, color: Colors.black), onPressed: (){
                   Get.to(() => const DetailProfile());
                 }
               ),
             ],
             leading: Container(
-              color: Colors.black,
+              color: Colors.white,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -131,11 +131,11 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Trading Signal 18 FX", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                      const Text("Trading Signal TridentPRO", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
                       CupertinoButton(
                         padding: EdgeInsets.zero,
                         onPressed: (){},
-                        child: const Text("Lihat Semua", style: TextStyle(fontSize: 14, color: Colors.white60),))
+                        child: const Text("Lihat Semua", style: TextStyle(fontSize: 14, color: Colors.black45),))
                     ],
                   ),
                 ),
@@ -145,8 +145,8 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                   padding: const EdgeInsets.only(right: 15, top: 15, bottom: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.white30,
-                    border: Border.all(color: Colors.white12),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black12),
                     boxShadow: const [
                       BoxShadow(color: Colors.black12, blurRadius: 20),
                     ]
@@ -164,7 +164,7 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                 Obx(
                   () => showInfoAndPromo.value ? Container(
                     width: size.width,
-                    color: Colors.black,
+                    color: GlobalVariablesType.backgroundColor,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -173,11 +173,11 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text("Info dan Promo", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                              const Text("Info dan Promo", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
                               CupertinoButton(
                                 padding: EdgeInsets.zero,
                                 onPressed: (){},
-                                child: const Text("Lihat Semua", style: TextStyle(fontSize: 14, color: Colors.white60),)),
+                                child: const Text("Lihat Semua", style: TextStyle(fontSize: 14, color: Colors.black54),)),
                             ],
                           ),
                         ),
@@ -204,7 +204,7 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                                 child: Container(
                                   margin: const EdgeInsets.symmetric(horizontal: 5),
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.white12),
+                                    border: Border.all(color: Colors.black12),
                                     borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(image: NetworkImage(utilsController.responseImageSlider.value!.response[index].picture!),
                                     fit: BoxFit.cover
@@ -224,7 +224,9 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                               effect: const WormEffect(
                                 dotHeight: 5,
                                 dotWidth: 20,
-                                activeDotColor: Colors.white,
+                                dotColor: Colors.black12,
+                                type: WormType.thinUnderground,
+                                activeDotColor: GlobalVariablesType.mainColor,
                               ),
                             ),
                           ),
@@ -243,11 +245,11 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text("News Sentiment", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
+                            const Text("News Sentiment", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
                             CupertinoButton(
                               padding: EdgeInsets.zero,
                               onPressed: (){},
-                              child: const Text("Lihat Semua", style: TextStyle(fontSize: 14, color: Colors.white60),)),
+                              child: const Text("Lihat Semua", style: TextStyle(fontSize: 14, color: Colors.black54),)),
                           ],
                         ),
                       ),
@@ -322,8 +324,8 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(marketName ?? "USDJPY", style: const TextStyle(fontSize: 13,fontWeight: FontWeight.bold, color: Colors.white)),
-                        const Text("2 hour(s) ago", style: TextStyle(fontSize: 10, color: Colors.white54))
+                        Text(marketName ?? "USDJPY", style: const TextStyle(fontSize: 13,fontWeight: FontWeight.bold, color: Colors.black)),
+                        const Text("2 hour(s) ago", style: TextStyle(fontSize: 10, color: Colors.black54))
                       ],
                     )
                   ],
@@ -333,8 +335,8 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Take Profit", style: TextStyle(fontSize: 9, color: Colors.white)),
-                    Text("152.0", style: TextStyle(fontSize: 11, color: Colors.white60))
+                    Text("Take Profit", style: TextStyle(fontSize: 9, color: Colors.black)),
+                    Text("152.0", style: TextStyle(fontSize: 11, color: Colors.black54))
                   ],
                 ),
 
@@ -342,8 +344,8 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Stop Loss", style: TextStyle(fontSize: 9, color: Colors.white)),
-                    Text("152.15", style: TextStyle(fontSize: 11, color: Colors.white60))
+                    Text("Stop Loss", style: TextStyle(fontSize: 9, color: Colors.black)),
+                    Text("152.15", style: TextStyle(fontSize: 11, color: Colors.black54))
                   ],
                 ),
 
@@ -351,8 +353,8 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Potensi Cuan", style: TextStyle(fontSize: 9, color: Colors.white)),
-                    Text("\$533", style: TextStyle(fontSize: 11, color: Colors.white60))
+                    Text("Potensi Cuan", style: TextStyle(fontSize: 9, color: Colors.black)),
+                    Text("\$533", style: TextStyle(fontSize: 11, color: Colors.black54))
                   ],
                 ),
               ],
@@ -364,14 +366,14 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.only(left: 7, right: 20, top: 8, bottom: 8),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: GlobalVariablesType.mainColor,
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20),
                       bottomRight: Radius.circular(20),
                     ),
                   ),
-                  child: const Text("Buy on 70.0% of probabilities by Trading Central", style: TextStyle(fontSize: 9, color: Colors.black54)),
+                  child: const Text("Buy on 70.0% of probabilities by Trading Central", style: TextStyle(fontSize: 9, color: Colors.white60)),
                 ),
               ),
               const SizedBox(width: 20),
@@ -382,7 +384,7 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                   borderRadius: BorderRadius.circular(30),
                   padding: EdgeInsets.zero,
                   color: GlobalVariablesType.mainColor,
-                  child: const Text("Buy", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 12)), onPressed: (){}),
+                  child: const Text("Buy", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)), onPressed: (){}),
               )
             ],
           ),
@@ -412,14 +414,14 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(marketName ?? "XAUUSD", style: const TextStyle(fontSize: 13,fontWeight: FontWeight.bold, color: Colors.white)),
-                          Text(marketName ?? "Gold vs US Dollar", style: const TextStyle(fontSize: 10, color: Colors.white54)),
+                          Text(marketName ?? "XAUUSD", style: const TextStyle(fontSize: 13,fontWeight: FontWeight.bold, color: Colors.black)),
+                          Text(marketName ?? "Gold vs US Dollar", style: const TextStyle(fontSize: 10, color: Colors.black54)),
                         ],
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  const Text("Saat ini sentiment berita adalah 96% Sell", style: TextStyle(fontSize: 10, color: Colors.white54)),
+                  const Text("Saat ini sentiment berita adalah 96% Sell", style: TextStyle(fontSize: 10, color: Colors.black54)),
                   const SizedBox(height: 8),
                   Container(
                     width: 80,
@@ -446,20 +448,20 @@ class _HomeNativeState extends State<HomeNative> with SingleTickerProviderStateM
 
 
 
-  Widget _tabSection(BuildContext context) {
+  Widget tabSection(BuildContext context) {
   return DefaultTabController(
     length: 2,
     child: Column(
       children: <Widget>[
         Container(
           color: Colors.transparent,
-          child: TabBar(
+          child: const TabBar(
             dividerColor: Colors.transparent,
             indicatorColor: Colors.black,
             indicatorSize: TabBarIndicatorSize.tab,
             labelStyle: TextStyle(),
             unselectedLabelColor: Colors.black38,
-            tabs: const [
+            tabs: [
               Tab(text: "Berita"),
               Tab(text: "Bulettin"),
             ]),

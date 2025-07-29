@@ -24,7 +24,7 @@ class RegisterController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/verify-1")!,
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/verify-1")!,
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -73,7 +73,7 @@ class RegisterController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/verify-2")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/verify-2")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -116,7 +116,7 @@ class RegisterController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/auth/verify-3")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/auth/verify-3")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'

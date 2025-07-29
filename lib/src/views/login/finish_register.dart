@@ -48,7 +48,7 @@ class _SignUpState extends State<SignUp> {
           padding: GlobalVariablesType.defaultPadding,
           children: [
             const SizedBox(height: 20),
-            Text(GlobalVariablesType.ucapanSignUP, style: kDefaultTextStyleSubtitleSplashScreen(color: Colors.black87)),
+            Text(GlobalVariablesType.ucapanSignUp, style: kDefaultTextStyleSubtitleSplashScreen(color: Colors.black87)),
             const SizedBox(height: 15),
             NameTextField(
               hintText: "Input your name",
@@ -104,7 +104,7 @@ class _SignUpState extends State<SignUp> {
                             isChecked = value!;
                           });
                         }),
-                        Text(GlobalVariablesType.agreeText!, style: kDefaultTextStyleButtonText(color: GlobalVariablesType.buttonTextColor![3]),)
+                        Text(GlobalVariablesType.agreeText, style: kDefaultTextStyleButtonText(color: GlobalVariablesType.buttonTextColor![3]),)
                     ],
                   ),
                 ),

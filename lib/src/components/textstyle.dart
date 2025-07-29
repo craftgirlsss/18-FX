@@ -6,7 +6,7 @@ TextStyle kDefaultTextStyleTitleAppBar({double? fontSize, FontWeight? fontWeight
     fontFamily: GlobalVariablesType.fontFamily,
     fontSize: fontSize ?? GlobalVariablesType.defaultFontSize,
     fontWeight: fontWeight ?? FontWeight.bold,
-    color: GlobalVariablesType.colorTextBlack[0]
+    color: GlobalVariablesType.mainColor
   );
 }
 
@@ -24,7 +24,7 @@ TextStyle kDefaultTextStyleTitleAppBarBold({double? fontSize}){
     fontFamily: GlobalVariablesType.fontFamilyBold,
     fontSize: fontSize ?? GlobalVariablesType.defaultFontSize,
     fontWeight: FontWeight.bold,
-    color: GlobalVariablesType.colorTextBlack[0]
+    color: GlobalVariablesType.mainColor
   );
 }
 

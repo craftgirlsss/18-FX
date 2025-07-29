@@ -1,4 +1,5 @@
 import 'package:delapanbelasfx/src/components/alerts.dart';
+import 'package:delapanbelasfx/src/components/appbars.dart';
 import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/controllers/trading_account_controller.dart';
 import 'package:delapanbelasfx/src/helpers/card_account_demo.dart';
@@ -26,8 +27,9 @@ class _AccountsV2State extends State<AccountsV2> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Accounts"),
+        backgroundColor: GlobalVariablesType.backgroundColor,
+        appBar: kDefaultAppBarTitle(
+          title: "Accounts",
         ),
         body: RefreshIndicator(
           onRefresh: () async {
@@ -50,9 +52,9 @@ class _AccountsV2State extends State<AccountsV2> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(Icons.candlestick_chart_outlined, size: 35, color: Colors.white),
+                        Icon(Icons.candlestick_chart_outlined, size: 35, color: GlobalVariablesType.mainColor),
                         SizedBox(height: 5),
-                        Text("Anda belum memilik akun trading", style: TextStyle(color: Colors.white), textAlign: TextAlign.center)
+                        Text("Anda belum memilik akun trading", style: TextStyle(color: GlobalVariablesType.mainColor), textAlign: TextAlign.center)
                       ],
                     ),
                   );
@@ -66,9 +68,9 @@ class _AccountsV2State extends State<AccountsV2> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.candlestick_chart_outlined, size: 35, color: Colors.white),
+                          Icon(Icons.candlestick_chart_outlined, size: 35, color: Colors.black54),
                           SizedBox(height: 5),
-                          Text("Anda belum memilik akun trading", style: TextStyle(color: Colors.white), textAlign: TextAlign.center)
+                          Text("Anda belum memilik akun trading", style: TextStyle(color: Colors.black54), textAlign: TextAlign.center)
                         ],
                       ),
                     );

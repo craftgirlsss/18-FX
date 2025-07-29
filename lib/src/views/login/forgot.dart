@@ -66,7 +66,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     () => kDefaultButtonLogin(
                       title: "Konfirmasi",
                       onPressed: accountsController.isLoading.value == true ? (){} : () async {
-                        if(await accountsController.forgot()){
+                        if(await accountsController.forgot(email: emailContrller.text)){
                           alertDialogCustomSuccess(
                             onTap: (){
                               Get.off(() => const LoginPage());

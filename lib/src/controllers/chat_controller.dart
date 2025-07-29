@@ -21,7 +21,7 @@ class ChatControllers extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/ticket")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/ticket")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -57,7 +57,7 @@ class ChatControllers extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/ticket-list")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/ticket-list")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'

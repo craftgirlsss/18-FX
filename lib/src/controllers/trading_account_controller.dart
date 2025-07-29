@@ -29,7 +29,7 @@ class TradingAccountController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/account/create-demo")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/account/create-demo")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -60,7 +60,7 @@ class TradingAccountController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/account/info")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/account/info")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -70,6 +70,7 @@ class TradingAccountController extends GetxController{
         },
       );
       var result = jsonDecode(response.body);
+      print("Ini result account info => $result");
       isLoading(false);
       if (response.statusCode == 200) {
         listTradingAccount.value = ListTradingAccountModels.fromJson(result);
@@ -91,7 +92,7 @@ class TradingAccountController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.get(
-        Uri.tryParse("https://api.dbsolution.app/util/bank-admin?currency=$currency")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/utils/bank-admin?currency=$currency")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -119,7 +120,7 @@ class TradingAccountController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/account/get_user_bank")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/account/get_user_bank")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -152,7 +153,7 @@ class TradingAccountController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/transaction/rate-conversation")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/transaction/rate-conversation")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -187,7 +188,7 @@ class TradingAccountController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/transaction/internal-transfer")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/transaction/internal-transfer")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -221,7 +222,7 @@ class TradingAccountController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/transaction/internal-transfer")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/transaction/internal-transfer")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -255,7 +256,7 @@ class TradingAccountController extends GetxController{
     try {
       isLoading(true);
       http.Response response = await http.post(
-        Uri.tryParse("https://api.dbsolution.app/transaction/withdrawal")!, 
+        Uri.tryParse("https://api-tridentprofutures.techcrm.net/transaction/withdrawal")!, 
         headers: {
           'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -288,7 +289,7 @@ class TradingAccountController extends GetxController{
   Future<bool> deposit({String? amount, String? userBankID, String? bankAdminID, String? tradingID, String? urlImage}) async {
     try {
       isLoading(true);
-      http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('https://api.dbsolution.app/transaction/deposit'));
+      http.MultipartRequest request = http.MultipartRequest('POST', Uri.parse('https://api-tridentprofutures.techcrm.net/transaction/deposit'));
       request.headers.addAll({
         'x-api-key': 'fewAHdSkx28301294cKSnczdAs',
         'Content-Type': 'application/x-www-form-urlencoded'

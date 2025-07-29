@@ -110,9 +110,10 @@ class _DepositAccountState extends State<DepositAccount> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
+        backgroundColor: GlobalVariablesType.backgroundColor,
         appBar: AppBar(
-          title: Text("Deposit Akun #ID${widget.akunTradingPengirim}", style: TextStyle(color: GlobalVariablesType.mainColor, fontSize: 16)),
-          iconTheme: CupertinoIconThemeData(color: GlobalVariablesType.mainColor),
+          title: Text("Deposit Akun #ID${widget.akunTradingPengirim}", style: const TextStyle(color: Colors.white, fontSize: 16)),
+          iconTheme: const CupertinoIconThemeData(color: Colors.white),
         ),
         body: SingleChildScrollView(
           child: Form(

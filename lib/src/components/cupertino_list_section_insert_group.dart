@@ -16,9 +16,13 @@ class CustomCupertinoListSectionInsertGroup extends StatelessWidget {
       topMargin: 0,
       hasLeading: true,
       dividerMargin: 15,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black12),
+        borderRadius: BorderRadius.circular(10)
+      ),
       separatorColor: separatorColor ?? Colors.black26,
-      footer: Text(footer ?? '', style: const TextStyle(color: Colors.white54, fontWeight: FontWeight.normal, fontSize: 12),),
-      header: Text(header != null ? header!.toUpperCase() : "HEADER", style: const TextStyle(fontSize: 15, color: CupertinoColors.white, fontWeight: FontWeight.normal),),
+      footer: Text(footer ?? '', style: const TextStyle(color: Colors.black45, fontWeight: FontWeight.normal, fontSize: 12),),
+      header: Text(header != null ? header!.toUpperCase() : "HEADER", style: const TextStyle(fontSize: 15, color: Colors.black45, fontWeight: FontWeight.normal),),
       margin: const EdgeInsets.all(15),
       backgroundColor: const Color.fromARGB(0, 141, 133, 133),
       children: children,

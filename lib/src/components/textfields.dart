@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/components/textstyle.dart';
 import 'package:delapanbelasfx/src/helpers/email_validator.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class EmailTextField extends StatefulWidget {
@@ -46,9 +47,9 @@ class _EmailTextFieldState extends State<EmailTextField> {
         },
         decoration: InputDecoration(
           hintText: widget.hintText,
-          prefixIcon: Icon(Icons.email, color: GlobalVariablesType.mainColor),
+          prefixIcon: const Icon(Icons.email, color: GlobalVariablesType.mainColor),
           labelText: widget.labelText,
-          labelStyle: TextStyle(color: GlobalVariablesType.mainColor),
+          labelStyle: const TextStyle(color: GlobalVariablesType.mainColor),
           hintStyle: TextStyle(color: Colors.white24, fontSize: GlobalVariablesType.defaultFontSize),
           filled: false,
           suffix: AnimatedContainer(
@@ -59,17 +60,17 @@ class _EmailTextFieldState extends State<EmailTextField> {
               shape: BoxShape.circle),
             child: isEmail.value == false ? const Icon(Icons.close, color: Colors.white, size: 16) : const Icon(Icons.done, color: Colors.white, size: 16),    
           ),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: GlobalVariablesType.mainColor
             )
           ),
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: GlobalVariablesType.mainColor
             )
           ),
-          border: UnderlineInputBorder(
+          border: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: GlobalVariablesType.mainColor
             )
@@ -283,6 +284,11 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
       () => isLoading.value ? const SizedBox() : TextFormField(
          controller: widget.controller,
          keyboardType: TextInputType.phone,
+         inputFormatters: [
+            FilteringTextInputFormatter.deny(
+              RegExp(r'^0+'),
+            ),
+          ],
          keyboardAppearance: Brightness.dark,
          readOnly: widget.readOnly ?? false,
          autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -313,17 +319,17 @@ class _PhoneTextFieldState extends State<PhoneTextField> {
               child: isPhone.value == false ? const Icon(Icons.close, color: Colors.white, size: 16) : const Icon(Icons.done, color: Colors.white, size: 16),    
             ),
           ),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: GlobalVariablesType.mainColor
             )
           ),
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder:const UnderlineInputBorder(
             borderSide: BorderSide(
               color: GlobalVariablesType.mainColor
             )
           ),
-          border: UnderlineInputBorder(
+          border: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: GlobalVariablesType.mainColor
             )

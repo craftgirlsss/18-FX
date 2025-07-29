@@ -64,13 +64,13 @@ class _ChatsV2State extends State<ChatsV2> {
             child: Scaffold(
               // resizeToAvoidBottomInset: false,
               backgroundColor: GlobalVariablesType.backgroundColor,
-              appBar: kDefaultAppBarCustom(context, title: const Text("Help Center"), centerTitle: true, actions: [
+              appBar: kDefaultAppBarCustom(context, title: const Text("Help Center", style: TextStyle(color: Colors.black54)), centerTitle: true, actions: [
               IconButton(
                 tooltip: "Refresh",
                 onPressed: (){
                   chatControllers.getMessage();
                 }, 
-                icon: const Icon(Icons.refresh)
+                icon: const Icon(Icons.refresh, color: Colors.black54)
               )
             ]),
               body: Stack(

@@ -1,5 +1,5 @@
 import 'package:delapanbelasfx/src/components/alerts.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:delapanbelasfx/src/components/appbars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,6 @@ import 'package:delapanbelasfx/src/controllers/accounts_controller.dart';
 import 'package:delapanbelasfx/src/helpers/focus_manager.dart';
 import 'package:delapanbelasfx/src/views/login/forgot.dart';
 import 'package:delapanbelasfx/src/views/login/otp.dart';
-import 'package:delapanbelasfx/src/views/login/register_v2.dart';
 import 'package:delapanbelasfx/src/views/login/rejected_page.dart';
 import 'package:delapanbelasfx/src/views/mainpage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -73,22 +72,34 @@ class _LoginPageState extends State<LoginPage> {
             child: Scaffold(
               extendBodyBehindAppBar: false,
               backgroundColor: GlobalVariablesType.backgroundColor,
+              appBar: kDefaultAppBarCustom(context, actions: [
+              CupertinoButton(child: const Icon(CupertinoIcons.info, color: GlobalVariablesType.mainColor), onPressed: (){
+                alertDialogCustomInfo(
+                  title: "Informasi",
+                  message: "Penuhi semua field terlebih dahulu untuk dapat menggunakan aplikasi TridentPro Futures",
+                  onTap: (){
+                    Navigator.pop(context);
+                  }
+                );
+              })
+            ],
+            title: const Text("Masuk", style: TextStyle(color: GlobalVariablesType.mainColor))
+            ),
               body: SafeArea(
                 child: Form(
                   key: formKey,
                   child: ListView(
                     padding: const EdgeInsets.all(20),
                     children: [
-                      const SizedBox(height: 50),
                       Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Image.asset('assets/images/ic_launcher.png', width: size.width / 6, height: size.width / 6),
-                        const SizedBox(height: 15),
-                        Text("Masuk", style: kDefaultTextStyleSubtitleSplashScreen()),
+                        Image.asset('assets/images/ic_launcher.png', width: size.width / 2),
+                        const Text("Masuk", style: TextStyle(color: GlobalVariablesType.mainColor, fontWeight: FontWeight.bold, fontSize: 25)),
+                        const SizedBox(height: 6),
                         SizedBox(
                           width: size.width / 1.5,
-                          child: const Text("Raih peluang investasi dengan bergabung bersama 18 FX", style: TextStyle(color: Colors.white38), textAlign: TextAlign.center,)),
+                          child: const Text("Raih peluang investasi dengan bergabung bersama TridentPRO Futures", style: TextStyle(color: GlobalVariablesType.mainColor), textAlign: TextAlign.center,)),
                       ],
                     ),
                     const SizedBox(height: 15),
@@ -127,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                             onTap: (){
                               Get.to(() => const ForgotPassword());
                             },
-                            child: Text(GlobalVariablesType.forgotText!, style: kDefaultTextStyleButtonText(color: GlobalVariablesType.mainColor, fontWeight: FontWeight.bold),),
+                            child: Text(GlobalVariablesType.forgotText, style: kDefaultTextStyleButtonText(color: GlobalVariablesType.mainColor, fontWeight: FontWeight.bold),),
                           ),
                         ],
                       ),
@@ -190,59 +201,59 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      Center(
-                        child: Text("Atau masuk dengan", style: kDefaultTextStyleCustom(color: GlobalVariablesType.mainColor, fontWeight: FontWeight.normal, fontSize: 14),)
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Obx(
-                          () => kDefaultButtonLoginWithGoogle(
-                            backgroundColor: Colors.white,
-                            onPressed: accountsController.isLoading.value ? (){} : () async {
-                              await googleSignIn.signOut();
-                              accountsController.signInWithGoogle();
-                              GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-                              GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-                              AuthCredential credential = GoogleAuthProvider.credential(accessToken: googleAuth!.accessToken, idToken: googleAuth.idToken);
-                              UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-                              User? user = userCredential.user;
-                              accountsController.loginWithGoogleMethod(email: user?.email, name: user?.displayName, imageProfile: user?.displayName).then((result) async {
-                                if(result){
-                                  var personalDetail = accountsController.detailTempModel.value?.response.personalDetail;
-                                  if(personalDetail?.status == "2"){
-                                    Get.to(() => StepperTrialPage(
-                                      email: personalDetail?.email,
-                                      name: personalDetail?.name,
-                                      normalyRegisteredProcess: false,
-                                      fromLogin: true,
-                                      registerWithGoogle: true,
-                                      loginWithGoogle: false,
-                                      currentStep: personalDetail?.ver != null ? int.parse(accountsController.detailTempModel.value!.response.personalDetail.ver!) : 1,
-                                    ));
-                                  }else if(personalDetail?.status == "-1"){
-                                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                                    prefs.setString('email', personalDetail!.email!);
-                                    Get.offAll(() => const MainPage());
-                                  }else{
-                                    alertError(
-                                      title: "Galat",
-                                      message: "Status tidak ditemukan",
-                                      onTap: (){ Navigator.pop(context);}
-                                    );
-                                  }
-                                }else{
-                                  alertError(
-                                    title: "Galat",
-                                    message: accountsController.responseMessage.value,
-                                    onTap: (){ Navigator.pop(context);}
-                                  );
-                                }
-                              });
-                            } ,
-                            title: "Sign in with Google"
-                          ),
-                        ),
-                      ),
+                      // Center(
+                      //   child: Text("Atau masuk dengan", style: kDefaultTextStyleCustom(color: GlobalVariablesType.mainColor, fontWeight: FontWeight.normal, fontSize: 14),)
+                      // ),
+                      // Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: Obx(
+                      //     () => kDefaultButtonLoginWithGoogle(
+                      //       backgroundColor: Colors.white,
+                      //       onPressed: accountsController.isLoading.value ? (){} : () async {
+                      //         await googleSignIn.signOut();
+                      //         accountsController.signInWithGoogle();
+                      //         GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+                      //         GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+                      //         AuthCredential credential = GoogleAuthProvider.credential(accessToken: googleAuth!.accessToken, idToken: googleAuth.idToken);
+                      //         UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+                      //         User? user = userCredential.user;
+                      //         accountsController.loginWithGoogleMethod(email: user?.email, name: user?.displayName, imageProfile: user?.displayName).then((result) async {
+                      //           if(result){
+                      //             var personalDetail = accountsController.detailTempModel.value?.response.personalDetail;
+                      //             if(personalDetail?.status == "2"){
+                      //               Get.to(() => StepperTrialPage(
+                      //                 email: personalDetail?.email,
+                      //                 name: personalDetail?.name,
+                      //                 normalyRegisteredProcess: false,
+                      //                 fromLogin: true,
+                      //                 registerWithGoogle: true,
+                      //                 loginWithGoogle: false,
+                      //                 currentStep: personalDetail?.ver != null ? int.parse(accountsController.detailTempModel.value!.response.personalDetail.ver!) : 1,
+                      //               ));
+                      //             }else if(personalDetail?.status == "-1"){
+                      //               SharedPreferences prefs = await SharedPreferences.getInstance();
+                      //               prefs.setString('email', personalDetail!.email!);
+                      //               Get.offAll(() => const MainPage());
+                      //             }else{
+                      //               alertError(
+                      //                 title: "Galat",
+                      //                 message: "Status tidak ditemukan",
+                      //                 onTap: (){ Navigator.pop(context);}
+                      //               );
+                      //             }
+                      //           }else{
+                      //             alertError(
+                      //               title: "Galat",
+                      //               message: accountsController.responseMessage.value,
+                      //               onTap: (){ Navigator.pop(context);}
+                      //             );
+                      //           }
+                      //         });
+                      //       } ,
+                      //       title: "Sign in with Google"
+                      //     ),
+                      //   ),
+                      // ),
                       const SizedBox(height: 10),
                       // Padding(
                       //   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -265,12 +276,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              bottomNavigationBar: TextButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterAccountV2()));
-                  },
-                  child: Text(GlobalVariablesType.buatAkunText!, style: kDefaultTextStyleCustom(color: GlobalVariablesType.mainColor, fontWeight: FontWeight.bold, fontSize: 14),),
-                ),
               ),
             ),
           ),

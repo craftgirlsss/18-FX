@@ -1,6 +1,8 @@
 import 'package:delapanbelasfx/src/components/buttons.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:delapanbelasfx/src/components/main_variable.dart';
+import 'package:delapanbelasfx/src/views/dashboard/accounts/create_real_account_web.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 class CreateRealAccount extends StatefulWidget {
@@ -15,7 +17,11 @@ class _CreateRealAccountState extends State<CreateRealAccount> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: GlobalVariablesType.backgroundColor,
+      appBar: AppBar(
+        centerTitle: false,
+        title: const Text("Buat akun REAL", style: TextStyle(color: Colors.white))
+      ),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(20),
@@ -26,13 +32,21 @@ class _CreateRealAccountState extends State<CreateRealAccount> {
             children: [
               Column(
                 children: [
-                  const Text("Your money\nwork while you", style: TextStyle(color: Colors.white70, fontSize: 40), textAlign: TextAlign.center,),
+                  const Text("Your money\nwork while you", style: TextStyle(color: Colors.black54, fontSize: 40), textAlign: TextAlign.center,),
                   Image.asset('assets/images/rest-text.png', width: size.width / 3),
                 ],
               ),
               Image.asset('assets/images/rest.png'),
               CustomCupertinoButton.tint(
-                onPressed: (){},
+                onPressed: (){
+                  Get.to(() => const CreateRealAccountWeb());
+                  // alertError(
+                  //   message: "Fitur masih dalam pengembangan",
+                  //   onTap: (){
+                  //     Get.back();
+                  //   },
+                  // );
+                },
                 iconData: Iconsax.card_add_outline,
                 title: "Buat Akun Real Sekarang"
               )

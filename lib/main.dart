@@ -9,7 +9,6 @@ import 'package:delapanbelasfx/src/components/main_variable.dart';
 import 'package:delapanbelasfx/src/views/splash/splashscreen.dart';
 // import 'package:sentry_flutter/sentry_flutter.dart';
 
-
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
@@ -49,14 +48,14 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         defaultTransition: Transition.rightToLeftWithFade,
         transitionDuration: const Duration(milliseconds: 300),
-        title: 'DB Solution',
-        themeMode: ThemeMode.dark,
+        title: 'TridentPRO Futures',
+        themeMode: ThemeMode.light,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           cupertinoOverrideTheme: MaterialBasedCupertinoThemeData(materialTheme: ThemeData.dark()),
           scaffoldBackgroundColor: Colors.black,
           appBarTheme: const AppBarTheme(
-          color:  Colors.black,
+          color: GlobalVariablesType.mainColor,
           centerTitle: true,
           elevation: 0,
         ),
